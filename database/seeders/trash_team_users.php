@@ -18,28 +18,28 @@ class trash_team_users extends Seeder
     public function run()
     {
         DB::table('trash_team_users')->insert([
-            'trash_regions_description'=>"Time Zona Sul",
+            'trash_team_description'=>"Time Zona Sul",
             'status'=>0,
             'created_at'=>date("d-m-Y H:i:s"),
             'updated_at'=>date("d-m-Y H:i:s")
         ]);
 
         DB::table('trash_team_users')->insert([
-            'trash_regions_description'=>"Time Zona Norte",
+            'trash_team_description'=>"Time Zona Norte",
             'status'=>1,
             'created_at'=>date("d-m-Y H:i:s"),
             'updated_at'=>date("d-m-Y H:i:s")
         ]);
 
         DB::table('trash_team_users')->insert([
-            'trash_regions_description'=>"Time Zona Leste",
+            'trash_team_description'=>"Time Zona Leste",
             'status'=>0,
             'created_at'=>date("d-m-Y H:i:s"),
             'updated_at'=>date("d-m-Y H:i:s")
         ]);
 
         DB::table('trash_team_users')->insert([
-            'trash_regions_description'=>"Time Zona Oeste",
+            'trash_team_description'=>"Time Zona Oeste",
             'status'=>1,
             'created_at'=>date("d-m-Y H:i:s"),
             'updated_at'=>date("d-m-Y H:i:s")

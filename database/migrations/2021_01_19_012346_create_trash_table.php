@@ -28,6 +28,7 @@ class CreateTrashTable extends Migration
 
             $table->unsignedBigInteger('id_trash_organization');
             $table->foreign('id_trash_organization')->references('id')->on('trash_organization');
+            $table->boolean('status');
             
         });
     }

@@ -11,8 +11,12 @@ class TrashTeamUsersController extends Controller
     function create(Request $request)
     {
         $description = $request->input('description');
+        $status = $request->input('status');
+
+
         $TrashTeamUsers = new TrashTeamUsersModel;
         $TrashTeamUsers->trash_team_description = $description;
+        $TrashTeamUsers->status = $status;
         $TrashTeamUsers->save();
         return $TrashTeamUsers->get();
     }
@@ -20,11 +24,13 @@ class TrashTeamUsersController extends Controller
     function update(Request $request){
         $id = $request->input('id');
         $description = $request->input('description');
+        $status = $request->input('status');
 
         $TrashTeamUsers = TrashTeamUsersModel::find($id);
 
         $TrashTeamUsers->trash_team_description = $description;
-        
+        $TrashTeamUsers->status = $status;
+
         $TrashTeamUsers->save();
         return $TrashTeamUsers::find($id);
 

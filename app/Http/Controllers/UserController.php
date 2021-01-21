@@ -15,19 +15,21 @@ class UserController extends Controller
         $user = $request->input('user');
         $password = $request->input('password');
         $id_trash_team = $request->input('id_trash_team');
+        $status = $request->input('status');
 
         $User = new UserModel;
         $User->name = $name;
         $User->user = $user;
         $User->password = $password;
         $User->id_trash_team = $id_trash_team;
+        $User->status = $status;
         $User->save();
         return $User->get();
     }
     
     function update(Request $request){
         $id = $request->input('id');
-     
+        $status = $request->input('status');
         $name = $request->input('name');
         $user = $request->input('user');
         $password = $request->input('password');
@@ -39,6 +41,7 @@ class UserController extends Controller
         $User->user = $user;
         $User->password = $password;
         $User->id_trash_team = $id_trash_team;
+        $User->status = $status;
         $User->save();
       
         return $User::find($id);

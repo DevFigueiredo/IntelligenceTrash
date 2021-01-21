@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class TrashHistoryModel extends Model
 {
     use HasFactory;
+     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'trash_history';
 }

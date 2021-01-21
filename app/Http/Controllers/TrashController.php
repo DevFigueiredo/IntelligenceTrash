@@ -23,6 +23,7 @@ class TrashController extends Controller
         $trash_status = $request->input('trash_status');
         $id_trash_region = $request->input('id_trash_region');
         $id_trash_organization = $request->input('id_trash_organization');
+        $status = $request->input('status');
         $Trash = new TrashModel;
         $Trash->trash_name = $trash_name;
         $Trash->trash_latitude = $trash_latitude;
@@ -31,6 +32,7 @@ class TrashController extends Controller
         $Trash->trash_status = $trash_status;
         $Trash->id_trash_region = $id_trash_region;
         $Trash->id_trash_organization = $id_trash_organization;
+        $Trash->status = $status;
         $Trash->save();
 
         //Após Cadastrar a Lixeira acima, nós inserimos a capacidade primária atual dela, começando em 0
@@ -65,7 +67,7 @@ class TrashController extends Controller
 
     }
 
-    function updateCapacitY(Request $request){
+    function updateCapacity(Request $request){
         $trash_capacity_used = $request->input('trash_capacity_used');
         $id_trash = $request->input('id_trash');
          
