@@ -33,6 +33,11 @@ function get_trash_region_info(id){
                 //Popula o campo de input da descrição e id com atributo hidden
                 document.getElementById("region_description").setAttribute('value',dado.trash_regions_description);
                 document.getElementById("trash_region_id").setAttribute('value',dado.id);
+
+                var status = 0;
+                dado.status=="1" ? status=1 : status=0;
+                document.querySelector('.status').checked = status;
+
             })
         })
         
@@ -51,6 +56,9 @@ function region(){
 
 function create_region(){
     var description = document.getElementById("region_description").value;
+    var status = document.querySelector('.status').checked;
+
+    status=="true" ? status=1 : status=0;
 
     var url = "/region/create";
     let myinit = {
@@ -59,12 +67,15 @@ function create_region(){
             "Accept": "application/json",
             "Content-Type": "application/json"
             },
-        body: JSON.stringify({"description": description})      
+        body: JSON.stringify({"description": description,
+                              "status":status
+        })      
     }
 
     fetch(url,myinit)
         .then(function(response){
             response.json().then(function(dado){
+                location.reload();
                 //Se chegou aqui provavelmente inseriu certinho._
                 //Utilize a variavel dado da function para verificar se inseriu ou não. 
                 //Você precisa fazer a verificação aqui.
@@ -75,6 +86,9 @@ function create_region(){
 
 function edit_region(id){
     var description = document.getElementById("region_description").value;
+    var status = document.querySelector('.status').checked;
+
+    status=="1" ? status=1 : status=0;
 
     var url = "/region/update";
     let myinit = {
@@ -84,7 +98,8 @@ function edit_region(id){
             "Content-Type": "application/json"
             },
         body: JSON.stringify({"id_region": id,
-                              "description": description
+                              "description": description,
+                              "status":status
         })      
     }
 

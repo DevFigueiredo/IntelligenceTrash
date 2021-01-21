@@ -79,6 +79,7 @@ class TrashController extends Controller
 
     function delete(Request $request){
         $id = $request->input('id');
+        $TrashCapacity = TrashCapacityModel::where('id_trash', $id)->delete();
         $Trash = TrashModel::find($id);
         $Trash->delete(); 
         return 'Deletado com Sucesso';

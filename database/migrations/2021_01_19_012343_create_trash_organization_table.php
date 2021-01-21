@@ -16,6 +16,7 @@ class CreateTrashOrganizationTable extends Migration
         Schema::create('trash_organization', function (Blueprint $table) {
             $table->increments('id');
             $table->string('trash_organization_description');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

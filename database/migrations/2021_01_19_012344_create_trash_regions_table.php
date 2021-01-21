@@ -16,6 +16,7 @@ class CreateTrashRegionsTable extends Migration
         Schema::create('trash_regions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('trash_regions_description');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

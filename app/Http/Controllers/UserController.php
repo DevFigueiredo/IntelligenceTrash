@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\UserModel;
 
 class UserController extends Controller
@@ -56,11 +58,15 @@ class UserController extends Controller
     }
 
 
+   
     function show($id){
-
-        return UserModel::find($id);
-
+        return DB::table('users')
+        ->leftJoin('trash_team_users', 'users.id_trash_team', '=', 'trash_team_users.id')
+        ->select('users.*', 'trash_team_users.trash_team_description')
+        ->get()
+        ->where('id', $id);
     }
+    
 
     }
 

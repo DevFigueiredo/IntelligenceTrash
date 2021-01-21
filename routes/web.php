@@ -7,6 +7,8 @@ use App\Http\Controllers\TrashCapacityController;
 use App\Http\Controllers\TrashRegionsController;
 use App\Http\Controllers\TrashOrganizationController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\TrashTeamUsersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +22,7 @@ use App\Http\Controllers\DashboardController;
 Route::get('/',[DashboardController::class, 'index']);
 
 Route::get('/trash', [TrashController::class, 'index']);
-Route::get('trash/info/{id}',[TrashController::class,'show']);
+Route::get('/trash/info/{id}',[TrashController::class,'show']);
 Route::post('/trash/create', [TrashController::class, 'create']);
 Route::put('/trash/update', [TrashController::class, 'update']);
 Route::put('/trash/update/capacity', [TrashController::class, 'updateCapacity']);
@@ -37,3 +39,18 @@ Route::post('/organization/create', [TrashOrganizationController::class, 'create
 Route::put('/organization/update', [TrashOrganizationController::class, 'update']);
 Route::delete('/organization/delete', [TrashOrganizationController::class, 'delete']);
 
+Route::get('/organization', [TrashOrganizationController::class, 'index']);
+Route::post('/organization/create', [TrashOrganizationController::class, 'create']);
+Route::put('/organization/update', [TrashOrganizationController::class, 'update']);
+Route::delete('/organization/delete', [TrashOrganizationController::class, 'delete']);
+
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/user/info/{id}',[UserController::class,'show']);
+Route::post('/user/create', [UserController::class, 'create']);
+Route::put('/user/update', [UserController::class, 'update']);
+Route::delete('/user/delete', [UserController::class, 'delete']);
+
+Route::get('/team', [TrashTeamUsersController::class, 'index']);
+Route::post('/team/create', [TrashTeamUsersController::class, 'create']);
+Route::put('/team/update', [TrashTeamUsersController::class, 'update']);
+Route::delete('/team/delete', [TrashTeamUsersController::class, 'delete']);

@@ -7,7 +7,7 @@ use App\Models\TrashOrganizationModel;
 
 class TrashOrganizationController extends Controller
 {
-    public function create(Request $request)
+  function create(Request $request)
     {
         $description = $request->input('description');
         $TrashOrganization = new TrashOrganizationModel;

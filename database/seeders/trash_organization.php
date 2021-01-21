@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 
-class trash_regions extends Seeder
+class trash_organization extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,29 +17,29 @@ class trash_regions extends Seeder
      */
     public function run()
     {
-        DB::table('trash_regions')->insert([
-            'trash_regions_description'=>"Zona Sul",
+        DB::table('trash_organization')->insert([
+            'trash_regions_description'=>"Cooperativa Santos Dumont",
             'status'=>0,
             'created_at'=>date("d-m-Y H:i:s"),
             'updated_at'=>date("d-m-Y H:i:s")
         ]);
 
-        DB::table('trash_regions')->insert([
-            'trash_regions_description'=>"Zona Norte",
+        DB::table('trash_organization')->insert([
+            'trash_regions_description'=>"Cooperativa Irmãos Tóxicos",
             'status'=>1,
             'created_at'=>date("d-m-Y H:i:s"),
             'updated_at'=>date("d-m-Y H:i:s")
         ]);
 
-        DB::table('trash_regions')->insert([
-            'trash_regions_description'=>"Zona Leste",
+        DB::table('trash_organization')->insert([
+            'trash_regions_description'=>"Coleta Hoje e Coleta Amanhã",
             'status'=>0,
             'created_at'=>date("d-m-Y H:i:s"),
             'updated_at'=>date("d-m-Y H:i:s")
         ]);
 
-        DB::table('trash_regions')->insert([
-            'trash_regions_description'=>"Zona Oeste",
+        DB::table('trash_organization')->insert([
+            'trash_regions_description'=>"Coleta Coleta",
             'status'=>1,
             'created_at'=>date("d-m-Y H:i:s"),
             'updated_at'=>date("d-m-Y H:i:s")

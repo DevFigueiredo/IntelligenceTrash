@@ -16,6 +16,7 @@ class CreateTrashTeamUsersTable extends Migration
         Schema::create('trash_team_users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('trash_team_description');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

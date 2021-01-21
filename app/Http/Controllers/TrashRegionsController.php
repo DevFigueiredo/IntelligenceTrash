@@ -15,7 +15,7 @@ class TrashRegionsController extends Controller
      */
     
 
-    public function index(){
+     function index(){
         $trash_region= new TrashRegionsModel;
 
         $regions = $trash_region->get();
@@ -23,7 +23,7 @@ class TrashRegionsController extends Controller
         return view('/regions/index',['title'=>'Regiões','trash_regions'=>$regions]);
     }
 
-    public function find(Request $request)
+     function find(Request $request)
     {
         $trash_region= new TrashRegionsModel;
 
@@ -36,28 +36,28 @@ class TrashRegionsController extends Controller
     }
 
 
-    public function create(Request $request)
+     function create(Request $request)
     {
         $trash_region= new TrashRegionsModel;
 
         $description = $request->input('description');
-
+        $status = $request->input('status');
         
-        $trash_region->trash_regions_description = $description;
-        
+        $trash_region->trash_regions_description = $description;        
+        $trash_region->status = $status;
         $trash_region->save();
 
         return 0;
     }
 
-    public function select(Request $request)
+     function select(Request $request)
     {
         //
     }
 
 
     
-    public function show($id_region)
+     function show($id_region)
     {
         $region = new RegionModel;
         if(!empty($id_region)){
@@ -73,14 +73,15 @@ class TrashRegionsController extends Controller
      * @param  \App\Models\Region  $region
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+     function update(Request $request)
     {
         $trash_region= new TrashRegionsModel;
 
         $id_region = $request->input('id_region');
         $description = $request->input('description');
+        $status = $request->input('status');
     
-        $trash_region->where('id',(int)$id_region)->update(['trash_regions_description'=>$description]);
+        $trash_region->where('id',(int)$id_region)->update(['trash_regions_description'=>$description,'status'=>$status]);
 
         //$trash_region->trash_regions_description = $description;
 
@@ -105,7 +106,7 @@ class TrashRegionsController extends Controller
      * @param  \App\Models\Region  $region
      * @return \Illuminate\Http\Response
      */
-    public function delete($id_region)
+     function delete($id_region)
     {
         $region = new RegionModel;
 
