@@ -14,30 +14,7 @@
 <div class="h-25 w-25 mw-50 mh-50"> 
   <canvas id="horario" width="1" height="1" ></canvas>
   <script>
-  var ctx = document.getElementById('horario').getContext('2d');
-  var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-          datasets: [{
-              label: 'Lixeiras cheias no total por horário',
-              data: [7, 2, 3, 5, 2, 3],
-              borderColor:'rgb(30,108,199)',
-              borderWidth: 1
-          }]
-      },
-      options: {
-    
-            scales: {
-                ticks: {
-                    max:1,
-                    min:0,
-                    stepSize:0,
-                    precision:0
-                }
-            }
-        }
-  });
+  
   </script>
 </div>
 
