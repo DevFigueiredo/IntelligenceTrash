@@ -20,6 +20,7 @@ class CreateTrashTable extends Migration
             $table->string('trash_longitude');
             $table->string('trash_address');
             $table->integer('trash_status');
+            $table->integer('trash_max_support');
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
 

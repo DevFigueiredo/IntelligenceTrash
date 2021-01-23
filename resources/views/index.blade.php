@@ -1,35 +1,53 @@
 @extends('layouts.structure')
 
 @section('content')
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2/dist/Chart.min.js"></script>
+<script src="{{asset('/js/dashboard.js')}}"></script>
+
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Dashboard</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
     </div>
   </div>
-<hr>
 <div class="row justify-content-center d-flex">
-  <div class="card" style="width: 18rem; margin-bottom: 10px">
-                  <div class="card-body">
-                  @if($full_trashes>($total_trashes/2))
-                    <h5 class="card-title">Lixeiras <a href="#"><i class="fa fa-circle" style="margin-left: 1vh;float: right;color: red;cursor:pointer;"></i></a></h5>
-                  @else
-                  <h5 class="card-title">Lixeiras <a href="#"><i class="fa fa-circle" style="margin-left: 1vh;float: right;color: green;cursor:pointer;"></i></a></h5>
-                  @endif
-                  <p class="card-text">{{$full_trashes}}/{{$total_trashes}} - Lixeiras cheias !</p>
-                    <a href="/trash" class="btn btn-primary">Monitorar</a>
-  </div>
-  </div>
-  <div class="card" style="width: 18rem; margin-bottom: 10px; margin-left: 5vh;">
-                  <div class="card-body">
-                  @if($full_regions>($total_regions/2))
-                    <h5 class="card-title">Regiões <a href="#"><i class="fa fa-circle" style="margin-left: 1vh;float: right;color: red;cursor:pointer;"></i></a></h5>
-                  @else
-                  <h5 class="card-title">Regiões <a href="#"><i class="fa fa-circle" style="margin-left: 1vh;float: right;color: green;cursor:pointer;"></i></a></h5>
-                  @endif
-                  <p class="card-text">{{$full_regions}}/{{$total_regions}} - Regiões com superlotamento !</p>
-                    <a href="/region" class="btn btn-primary">Monitorar</a>
-  </div>
-  </div>
+<div class="h-25 w-25 mw-50 mh-50"> 
+  <canvas id="horario" width="1" height="1" ></canvas>
+  <script>
+  var ctx = document.getElementById('horario').getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          datasets: [{
+              label: 'Lixeiras cheias no total por horário',
+              data: [7, 2, 3, 5, 2, 3],
+              borderColor:'rgb(30,108,199)',
+              borderWidth: 1
+          }]
+      },
+      options: {
+    
+            scales: {
+                ticks: {
+                    max:1,
+                    min:0,
+                    stepSize:0,
+                    precision:0
+                }
+            }
+        }
+  });
+  </script>
+</div>
+
+<div class="h-25 w-25 mw-50 mh-50"> 
+  <canvas id="regioes" width="1" height="1" ></canvas>
+</div>
+
+<div class="h-25 w-25 mw-50 mh-50"> 
+  <canvas id="lixeiras" width="1" height="1" ></canvas>
+</div>
 </div>
   
 @stop

@@ -14,8 +14,8 @@ class CreateUsersTable extends Migration
             $table->string('user');
             $table->string('password');
             $table->unsignedBigInteger('id_trash_team');
-            $table->foreign('id_trash_team')->references('id')->on('trash_team_users');
             $table->boolean('status');
+            $table->foreign('id_trash_team')->references('id')->on('trash_team_users');
             $table->timestamps();
         });
     }

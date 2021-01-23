@@ -22,6 +22,8 @@ use App\Http\Controllers\TrashHistoryController;
 */
 Route::get('/',[DashboardController::class, 'index']);
 
+Route::get('/trasheslist', [TrashController::class, 'indexTrashList']);
+
 Route::get('/trash', [TrashController::class, 'index']);
 Route::get('/trash/info/{id}',[TrashController::class,'show']);
 Route::post('/trash/create', [TrashController::class, 'create']);
@@ -34,6 +36,7 @@ Route::get('/trash/history/{id_status_history}', [TrashHistoryController::class,
 Route::get('/trash/{id_trash}/history/', [TrashHistoryController::class, 'showHistoryToTrash']);
 Route::get('/trash/{id_trash}/history/{id_status_history}', [TrashHistoryController::class, 'showHistoryToHistoryToStatus']);
 Route::post('/trash/history/create', [TrashHistoryController::class, 'create']);
+
 
 
 

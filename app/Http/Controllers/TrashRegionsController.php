@@ -30,7 +30,7 @@ class TrashRegionsController extends Controller
         $id_region = $request->input('id_region');
         
 
-        $region = $trash_region->find(intval($id_region));
+        $region = $trash_region->find($id_region);
 
        return json_encode($region);
     }

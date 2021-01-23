@@ -13,12 +13,14 @@ class TrashHistoryController extends Controller
 
     function create(Request $request)
     {
-        $trash_history_description = $request->input('trash_history_description');
+      $trash_history_description = $request->input('trash_history_description');
+      $trash_supported = $request->input('trash_supported');
         $id_trash = $request->input('id_trash');
         $id_history_status = $request->input('id_history_status');
         $id_user = $request->input('id_user');
 
         $TrashHistory = new TrashHistoryModel;
+        $TrashHistory->trash_supported = $trash_supported;
         $TrashHistory->trash_history_description = $trash_history_description;
         $TrashHistory->id_trash = $id_trash;
         $TrashHistory->id_history_status = $id_history_status;

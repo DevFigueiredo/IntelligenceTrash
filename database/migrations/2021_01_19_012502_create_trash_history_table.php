@@ -16,6 +16,7 @@ class CreateTrashHistoryTable extends Migration
         Schema::create('trash_history', function (Blueprint $table) {
             $table->increments('id');
             $table->string('trash_history_description');
+            $table->integer('trash_supported');
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
 

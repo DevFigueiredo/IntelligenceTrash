@@ -22,6 +22,7 @@ class TrashController extends Controller
         $trash_address = $request->input('trash_address');
         $trash_status = $request->input('trash_status');
         $id_trash_region = $request->input('id_trash_region');
+        $trash_max_support = $request->input('trash_max_support');
         $id_trash_organization = $request->input('id_trash_organization');
         $status = $request->input('status');
         $Trash = new TrashModel;
@@ -32,6 +33,7 @@ class TrashController extends Controller
         $Trash->trash_status = $trash_status;
         $Trash->id_trash_region = $id_trash_region;
         $Trash->id_trash_organization = $id_trash_organization;
+        $Trash->trash_max_support = $trash_max_support;
         $Trash->status = $status;
         $Trash->save();
 
@@ -53,6 +55,7 @@ class TrashController extends Controller
         $trash_address = $request->input('trash_address');
         $trash_status = $request->input('trash_status');
         $id_trash_region = $request->input('id_trash_region');
+        $trash_max_support = $request->input('trash_max_support');
         $id_trash_organization = $request->input('id_trash_organization');
         $Trash = TrashModel::find($id);
         $Trash->trash_name = $trash_name;
@@ -60,6 +63,7 @@ class TrashController extends Controller
         $Trash->trash_longitude = $trash_longitude;
         $Trash->trash_address = $trash_address;
         $Trash->trash_status = $trash_status;
+        $Trash->trash_max_support = $trash_max_support;
         $Trash->id_trash_region = $id_trash_region;
         $Trash->id_trash_organization = $id_trash_organization;
         $Trash->save();
@@ -103,4 +107,9 @@ class TrashController extends Controller
 
     }
 
+    function indexTrashList(){
+
+        return view('/trasheslist/index',['title'=>'Listagem de Lixeiras','title2'=>'oi']);
+
+    }
 }
