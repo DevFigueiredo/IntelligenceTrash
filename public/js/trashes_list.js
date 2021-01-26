@@ -7,8 +7,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 var LeafIcon = L.Icon.extend({
     options: {
-        shadowUrl: 'leaf-shadow.png',
-        iconSize:     [38, 95],
+        iconSize:     [48, 45],
         shadowSize:   [50, 64],
         iconAnchor:   [22, 94],
         shadowAnchor: [4, 62],
@@ -30,7 +29,7 @@ L.marker([-23.7215727, -45.440392]).addTo(map)
         return new L.Icon(options);
     };
 
-    L.marker([-23.7215727, -45.440392], {icon: ancor}).addTo(map).bindPopup("I am a green leaf.");
+    L.marker([-23.7175848, -45.4371733], {icon: ancor}).addTo(map).bindPopup("I am a green leaf.");
 
     
 
