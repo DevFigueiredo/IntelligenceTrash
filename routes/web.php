@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\TrashController;
 use App\Http\Controllers\TrashCapacityController;
@@ -20,15 +21,16 @@ use App\Http\Controllers\TrashHistoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',[DashboardController::class, 'index']);
+Route::get('/dashboard',[DashboardController::class, 'index']);
+Route::get('/',[IndexController::class, 'index']);
 
 Route::get('/trasheslist', [TrashController::class, 'indexTrashList']);
-
+Route::get('/trash/index', [TrashController::class, 'indexTrashView']);
 Route::get('/trash', [TrashController::class, 'index']);
 Route::get('/trash/info/{id}',[TrashController::class,'show']);
 Route::post('/trash/create', [TrashController::class, 'create']);
 Route::put('/trash/update', [TrashController::class, 'update']);
-Route::put('/trash/update/capacity', [TrashController::class, 'updateCapacity']);
+Route::post('/trash/add/capacity', [TrashController::class, 'AddCapacity']);
 Route::delete('/trash/delete', [TrashController::class, 'delete']);
 
 Route::get('/trash/history', [TrashHistoryController::class, 'index']);
