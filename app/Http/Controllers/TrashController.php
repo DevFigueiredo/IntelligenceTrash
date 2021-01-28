@@ -71,15 +71,17 @@ class TrashController extends Controller
 
     }
 
-    function updateCapacity(Request $request){
+    function AddCapacity(Request $request){
         $trash_capacity_used = $request->input('trash_capacity_used');
         $id_trash = $request->input('id_trash');
-         
-        TrashCapacityModel::where('id_trash', $id_trash)
-        ->update(['trash_capacity_used' => $trash_capacity_used]);
+        $TrashCapacity = new TrashCapacityModel();
+        $TrashCapacity->trash_capacity_used = $trash_capacity_used;
+        $TrashCapacity->id_trash = $id_trash;
+      
+        $TrashCapacity->save();
+        
+       return $TrashCapacity->get();
 
-        return TrashCapacityModel::where('id_trash', $id_trash)        
-        ->get();
     }
 
 
@@ -89,23 +91,46 @@ class TrashController extends Controller
         $Trash = TrashModel::find($id);
         $Trash->delete(); 
         return 'Deletado com Sucesso';
-   
     }
+    
     function show($id){
         return DB::table('trash')
         ->leftJoin('trash_capacity_used', 'trash.id', '=', 'trash_capacity_used.id_trash')
         ->select('trash.*', 'trash_capacity_used.trash_capacity_used')
+        ->orderBy('trash_capacity_used.id','DESC')
         ->get()
-        ->where('id', $id);
+        ->where('id', $id)
+        ->take(1);
+
     }
     
     function index(Request $request){
-        return DB::table('trash')
-        ->leftJoin('trash_capacity_used', 'trash.id', '=', 'trash_capacity_used.id_trash')
-        ->select('trash.*', 'trash_capacity_used.trash_capacity_used')
-        ->get();
+        $trashes = DB::select("SELECT 
+        max(a.id) as last_capacity_id
+        , a.trash_capacity_used
+        ,a.created_at as last_created_capacity 
+        , b.*  
+        FROM trash_capacity_used  as a
+        LEFT JOIN trash as b on b.id=a.id_trash
+        GROUP BY id_trash");
+    
+       
+
+        return $trashes;
+    
 
     }
+    function indexTrashView(Request $request){
+        $trashes = DB::table('trash')->limit(1)
+        ->leftJoin('trash_capacity_used', 'trash.id', '=', 'trash_capacity_used.id_trash')
+        ->select('trash.*', 'trash_capacity_used.trash_capacity_used')
+        ->orderBy('trash_capacity_used.id','DESC')
+        ->get()
+        ->take(1);
+
+        return view('/trash/index',['title'=>'Regiões','trashes'=>json_decode($trashes, true)]);
+    }
+
 
     function indexTrashList(){
 

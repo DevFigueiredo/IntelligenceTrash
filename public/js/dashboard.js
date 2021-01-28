@@ -6,14 +6,57 @@ ready(() => {
 var regiosChart = null;
 var lixeirasChart = null;
 var horarioChart = null;
+var lixeirasCheias = 0;
+var horario = null;
 
 function addData(charti, label, data) {
     charti.data.labels.push(label);
+
+    if(charti.data.datasets.length > 10){
+        charti.data.datasets.shift();
+    }
     charti.data.datasets.forEach((dataset) => {
-    dataset.data.push(data);
-});
+        dataset.data.push(data);
+    });
     charti.update();
 }
+
+function getInfos(){
+    var url = "/trash/";
+    let myinit = {
+        method : 'GET'     
+    }
+
+    fetch(url,myinit)
+        .then(function(response){
+            response.json().then(function(dado){
+                console.log(dado)
+
+                //Calcula quantas lixeiras estão cheias e joga no gráfico de horarioChart
+                //Foi tentado exportar essa função abaixo para uma função externa porem da erro, não mexer
+                lixeirasCheias = 0;
+                dado.forEach((data)=>{
+                    if((data.trash_capacity_used >= data.trash_max_support) || (data.trash_capacity_used >= (data.trash_max_support/2))){
+                        lixeirasCheias++;
+                        horario = data.last_created_capacity;
+                    }
+                })
+
+                addData(horarioChart,horario,lixeirasCheias);
+                //Fim do calcula quantas lixeiras estão cheias e joga no gráfico de horarioChart
+
+
+
+
+                //Se chegou aqui provavelmente inseriu certinho._
+                //Utilize a variavel dado da function para verificar se inseriu ou não. 
+                //Você precisa fazer a verificação aqui.
+            })
+        })
+}
+
+
+
 
 //Gera grafico das regioes
 var ctx = document.getElementById('regioes').getContext('2d');
@@ -123,7 +166,7 @@ regioesChart = new Chart(ctx, {
 
 
 
-
+  setInterval(getInfos,5000)
 
 
 

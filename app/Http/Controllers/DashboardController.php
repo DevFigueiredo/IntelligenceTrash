@@ -33,7 +33,7 @@ class DashboardController extends Controller
     }
     
     function index(){
-        return view('/index',['title'=>'Dashboard','title2'=>'oi']);
+        return view('/dashboard/index',['title'=>'Dashboard','title2'=>'oi']);
     }
 
     function indexTrashList(){
