@@ -12,6 +12,8 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
     <!-- Bootstrap core CSS -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -76,9 +78,17 @@
             <span data-feather="plus-circle"></span>
           </a>
         </h6>
+        
  
          <ul class="nav flex-column mb-2">
       
+         <li class="nav-item">
+            <a class="nav-link" href="/user/index">
+              <span data-feather="file"></span>
+              Usuários
+            </a>
+          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="/trash/index">
               <span data-feather="shopping-cart"></span>
@@ -95,7 +105,7 @@
 
 
           <li class="nav-item">
-            <a class="nav-link" href="/organization">
+            <a class="nav-link" href="/organization/index">
               <span data-feather="file"></span>
               Organizações
             </a>

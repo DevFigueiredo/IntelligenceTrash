@@ -28,6 +28,7 @@
                 <span class="slider rounded"></span>
             </label>
         </div>
+        <input type="hidden" name="trash_id" id="trash_id">
 
         <div class="col-10 bottomDiv" >
             <label>Nome da Lixeira</label>
@@ -87,9 +88,7 @@
             <label>Organização</label>
             <select class="form-control" id="id_trash_organization" aria-label="Default select example">
             <option selected>Informe a Organização</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+ 
          </select>
             </div>
         
@@ -97,16 +96,14 @@
             <label>Região</label>
             <select class="form-control" id="id_trash_region" aria-label="Default select example">
             <option selected>Informe o nome da região</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+      
          </select>
             </div>
         
            
         
     </div>
-    <button type="submit" class="btn btn-primary" id="btn_form" onclick="create_trash()">Cadastrar</button>
+    <button type="submit" class="btn btn-primary" id="btn_form" onclick="create_trash()">Registrar Informação</button>
 </div>
 </div>
 
@@ -120,32 +117,14 @@
 <div class="d-flex justify-content-center">
 
 <br>
-<table class="table table-striped table-bordered" style="width: 100%;">
-  <thead class="thead-dark">
-    <tr>
-     <!-- <th scope="col">ID</th> -->
-      <th scope="col">Status</th>
-      <th scope="col"><span style="float: center;">Descrição</span></th>
-      <th scope="col"><span style="float: right;">Editar</span></th>
 
-    </tr>
-  </thead>
-  <tbody>
-  @foreach($trashes as $trash)
-    <tr>
-    @if($trash['trash_status']==0)
-     <th scope="row">Inativo</th>
-    @endif
-    @if($trash['trash_status']==1)
-     <th scope="row">Ativo</th>
-    @endif
-      <td>{{$trash['trash_name']}}</td>
-      <td><a href="#" id="trash_region_{{$trash['id']}}" onclick="edit_trash(this.id)"style="float: right;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/1024px-Edit_icon_%28the_Noun_Project_30184%29.svg.png" alt="Editar" style="width:20px; height: 20px;"></a></td>
-    </tr>
-   @endforeach
-  
-  </tbody>
-</table>
+
+
+
+<div id="showTrashes"></div>
+
+
+
 </div>
 
 @endsection

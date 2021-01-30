@@ -35,6 +35,15 @@ class TrashRegionsController extends Controller
        return json_encode($region);
     }
 
+    function findAll()
+    {
+        $trash_region= new TrashRegionsModel;
+
+        $regions = $trash_region->get();
+
+       return json_encode($regions);
+    }
+
 
      function create(Request $request)
     {

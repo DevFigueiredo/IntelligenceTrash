@@ -57,6 +57,14 @@ class TrashOrganizationController extends Controller
         
         $organization = $TrashOrganization->get();       
     
+        return $organization;
+    }
+
+    function indexView(Request $request){
+        $TrashOrganization = new TrashOrganizationModel;
+        
+        $organization = $TrashOrganization->get();       
+    
         return view('/organizations/index',['title'=>'Organizações','organization'=>$organization]);
     }
 }

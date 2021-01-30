@@ -44,18 +44,21 @@ Route::post('/trash/history/create', [TrashHistoryController::class, 'create']);
 
 
 Route::get('/region', [TrashRegionsController::class, 'index']);
+Route::get('/region/all', [TrashRegionsController::class, 'findAll']);
 Route::post('/region/info', [TrashRegionsController::class, 'find']);
 Route::post('/region/create', [TrashRegionsController::class, 'create']);
 Route::post('/region/update', [TrashRegionsController::class, 'update']);
 Route::delete('/region/delete', [TrashRegionsController::class, 'delete']);
 
 Route::get('/organization', [TrashOrganizationController::class, 'index']);
+Route::get('/organization/index', [TrashOrganizationController::class, 'indexView']);
 Route::post('/organization/info', [TrashOrganizationController::class, 'find']);
 Route::post('/organization/create', [TrashOrganizationController::class, 'create']);
 Route::post('/organization/update', [TrashOrganizationController::class, 'update']);
 Route::delete('/organization/delete', [TrashOrganizationController::class, 'delete']);
 
 Route::get('/user', [UserController::class, 'index']);
+Route::get('/user/index', [UserController::class, 'indexView']);
 Route::get('/user/info/{id}',[UserController::class,'show']);
 Route::post('/user/create', [UserController::class, 'create']);
 Route::put('/user/update', [UserController::class, 'update']);

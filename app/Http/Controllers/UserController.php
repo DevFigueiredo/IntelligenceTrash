@@ -60,6 +60,10 @@ class UserController extends Controller
         return $User->get();        
     }
 
+    function indexView(Request $request){
+        return view('/user/index',['title'=>'Usuários']);
+  
+    }
 
    
     function show($id){

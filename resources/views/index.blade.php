@@ -35,7 +35,7 @@
     <div class="card">
 <article class="card-body">
 <h4 class="card-title mb-4 mt-1">DJ Soluções</h4>
-	 <form>
+	 <form method="get" action="/dashboard">
     <div class="form-group">
     	<label>Login</label>
         <input name="" class="form-control" placeholder="Login" type="email">
