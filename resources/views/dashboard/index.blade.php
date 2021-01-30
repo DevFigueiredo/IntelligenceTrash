@@ -12,6 +12,9 @@
 <script src="{{asset('/js/dashboard.js')}}"></script>
 <script src="{{asset('/js/dashboard_gerador.js')}}"></script>
 <script src="{{asset('/js/temporary.js')}}"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="{{asset('/js/dashboard_GrapichsGoogle.js')}}"></script>
+
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Dashboard</h1>
@@ -73,7 +76,10 @@
 
 
 </div>
-
+<div class="row">
+<div  class="col-7"></div>
+<div id="GrapichTrashToRegion" class="col-5" style="height: 300px;"></div>
+</div>
 
 
 

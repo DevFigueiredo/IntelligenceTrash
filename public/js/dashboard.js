@@ -1,4 +1,3 @@
-import {} from 'trashes_list.js'
 
 
 ready = (callback) => {
