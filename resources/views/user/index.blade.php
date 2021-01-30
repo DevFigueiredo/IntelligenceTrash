@@ -27,7 +27,7 @@
                 <span class="slider rounded"></span>
             </label>
         </div>
-        <input type="hidden" name="trash_id" id="user_id">
+        <input type="hidden" name="user_id" id="user_id">
 
         <div class="col-12 bottomDiv" >
             <label>Nome</label>
@@ -55,9 +55,12 @@
            
         
     </div>
-    <button type="submit" class="btn btn-primary" id="btn_form" onclick="create_trash()">Registrar Informação</button>
+    <button type="submit" class="btn btn-primary" id="btn_form" onclick="CreateUser()">Registrar Informação</button>
 </div>
 </div>
+
+
+<div id="showUsers"></div>
 
 
 

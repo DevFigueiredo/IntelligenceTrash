@@ -57,7 +57,10 @@ class UserController extends Controller
     
     function index(Request $request){
         $User = new UserModel;
-        return $User->get();        
+        return $User
+        ->leftJoin('trash_team_users', 'users.id_trash_team', '=', 'trash_team_users.id')
+        ->select('users.*', 'trash_team_users.trash_team_description')
+        ->get();        
     }
 
     function indexView(Request $request){
@@ -70,8 +73,8 @@ class UserController extends Controller
         return DB::table('users')
         ->leftJoin('trash_team_users', 'users.id_trash_team', '=', 'trash_team_users.id')
         ->select('users.*', 'trash_team_users.trash_team_description')
-        ->get()
-        ->where('id', $id);
+        ->where('users.id', $id)
+        ->get();
     }
     
 

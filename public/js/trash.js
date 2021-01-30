@@ -34,12 +34,13 @@ function find_trashes(){
 function show_trash_edit(id){
   axios.get(`/trash/info/${id}`)
   .then(function (response) {
-    console.log(response.data[0]);
-        const trash_id = document.getElementById("trash_id").value = response.data[0].id;
+    document.getElementById('btn_form').setAttribute( "onClick", "update_trash()" );
+
+       const trash_id = document.getElementById("trash_id").value = response.data[0].id;
         const trash_name = document.getElementById("trash_name").value = response.data[0].trash_name;
         const trash_latitude = document.getElementById("trash_latitude").value = response.data[0].trash_latitude; 
         const trash_longitude = document.getElementById("trash_longitude").value = response.data[0].trash_longitude;
-        const trash_status = document.getElementById("trash_status").checked = response.data[0].trash_status;
+        const trash_status = document.getElementById("trash_status").checked = response.data[0].trash_status == 1 ? true : false; ;
         const trash_max_support = document.getElementById("trash_max_support").value = response.data[0].trash_max_support;
         const id_trash_region = document.getElementById("id_trash_region").value = response.data[0].id_trash_region;
         const id_trash_organization = document.getElementById("id_trash_organization").value = response.data[0].id_trash_organization;
@@ -54,7 +55,6 @@ function show_trash_edit(id){
         const trash_state = document.getElementById("state").value = address.address_uf; 
         
         
-        document.getElementById('btn_form').setAttribute( "onClick", "update_trash()" );
 
 
   })
@@ -108,19 +108,6 @@ function show_trash_edit(id){
 
 function create_trash(){
  
-  const trash_name = document.getElementById("trash_name").value;
-  const trash_latitude = document.getElementById("trash_latitude").value; 
-  const trash_longitude = document.getElementById("trash_longitude").value;
-  const trash_status = document.getElementById("trash_status").checked;
-  const trash_max_support = document.getElementById("trash_max_support").value;
-  const id_trash_region = document.getElementById("id_trash_region").value;
-  const id_trash_organization = document.getElementById("id_trash_organization").value;
-  const cep = document.getElementById("cep").value;
-  const address = document.getElementById("address").value; 
-  const address_number = document.getElementById("address_number").value; 
-  const address_neighborhood = document.getElementById("address_neighborhood").value; 
-  const trash_address = address+', '+address_number+' - '+address_neighborhood+', Caraguatatuba - SP'+', '+cep;
-  
 const values =  getInputValuesTrash();
  axios.post('/trash/create',values)
     .then(function (response) {

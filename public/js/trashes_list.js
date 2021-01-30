@@ -1,10 +1,13 @@
-var map = L.map('mapid').setView([-23.7215727, -45.440392], 13);
+//Importando a biblioteca do Maps
+var map = L.map('mapid').setView([-23.7215727, -45.440392], 15);
 
+
+//Link da APi que retorna a renderização do mapa
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-
+//Aqui estou definindo algumas regras para o icone que irá aparecer no mapa
 var LeafIcon = L.Icon.extend({
     options: {
         iconSize:     [48, 45],
@@ -16,11 +19,36 @@ var LeafIcon = L.Icon.extend({
 });
 
 
-L.marker([-23.7215727, -45.440392]).addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-    .openPopup();
 
 
+//É realizado uma busca na nossa base de dados para ver quais as lixeiras cadastradas 
+axios.get('/trash')
+.then(function (response) {
+  //Armazeno as lixeiras na constante
+  const trashes = response.data;
+
+  //Percorro pelas lixeiras e marco no mapa utilizando a latitude e longitude com a função da biblioteca cada vez que o loop passa por uma lixeira
+  trashes.map(trash=>{
+//Função que marca no mapa      
+L.marker([trash.trash_latitude, trash.trash_longitude]).addTo(map)
+.openPopup();
+  })
+  
+})
+.catch(function (error) {
+  // handle error
+  console.log(error);
+})
+.then(function () {
+  // always executed
+});
+
+
+
+
+
+
+/*
     var ancor = new LeafIcon({iconUrl: 'ancor.jpg'}),
     redIcon = new LeafIcon({iconUrl: 'leaf-red.png'}),
     orangeIcon = new LeafIcon({iconUrl: 'leaf-orange.png'});
@@ -33,4 +61,4 @@ L.marker([-23.7215727, -45.440392]).addTo(map)
 
     
 
-    
+    */
