@@ -25,9 +25,16 @@
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
 
+   <style>
+  .card_region:hover{
+  background: grey;
+  }
+.bottomDiv{
+  margin-bottom: 10px;
+}
+.modal-display-topright{position:absolute;right:0;top:0}
+.modal-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
 
-    <style>
-    
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -156,6 +163,7 @@
         </main>
   </div>
 </div>
+
 
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>

@@ -30,7 +30,9 @@ axios.get('/trash')
   //Percorro pelas lixeiras e marco no mapa utilizando a latitude e longitude com a função da biblioteca cada vez que o loop passa por uma lixeira
   trashes.map(trash=>{
 //Função que marca no mapa      
-L.marker([trash.trash_latitude, trash.trash_longitude]).addTo(map)
+L.marker([trash.trash_latitude, trash.trash_longitude])
+.addTo(map)
+.bindPopup(`<b>${trash.trash_name}!</b><br>${trash.trash_address}.`)
 .openPopup();
   })
   
@@ -42,23 +44,3 @@ L.marker([trash.trash_latitude, trash.trash_longitude]).addTo(map)
 .then(function () {
   // always executed
 });
-
-
-
-
-
-
-/*
-    var ancor = new LeafIcon({iconUrl: 'ancor.jpg'}),
-    redIcon = new LeafIcon({iconUrl: 'leaf-red.png'}),
-    orangeIcon = new LeafIcon({iconUrl: 'leaf-orange.png'});
-    
-    L.icon = function (options) {
-        return new L.Icon(options);
-    };
-
-    L.marker([-23.7175848, -45.4371733], {icon: ancor}).addTo(map).bindPopup("I am a green leaf.");
-
-    
-
-    */

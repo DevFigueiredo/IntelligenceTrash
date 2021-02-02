@@ -139,4 +139,24 @@ class TrashController extends Controller
         return view('/trasheslist/index',['title'=>'Listagem de Lixeiras','title2'=>'oi']);
 
     }
+
+    function indexView($id){
+        $trashes = DB::select("SELECT 
+        max(a.id) as last_capacity_id
+        , a.trash_capacity_used
+        ,a.created_at as last_created_capacity 
+        , b.*  
+        , d.trash_organization_description as organizacao
+        , c.trash_regions_description as regiao
+        FROM trash_capacity_used  as a
+        LEFT JOIN trash as b on b.id=a.id_trash
+        INNER JOIN trash_regions as c on c.id = b.id_trash_region
+        INNER JOIN trash_organization as d on d.id = b.id_trash_organization
+        where b.id=$id
+        GROUP BY id_trash;");
+
+
+        $trash = json_decode(json_encode($trashes),true);
+        return view('/trash/trash_unique',['title'=>$trash[0]['trash_name'],'trash'=>$trash[0]]);
+    }
 }

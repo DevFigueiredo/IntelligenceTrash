@@ -1,3 +1,4 @@
+import('./index.js')
 
 
 window.onload = function() {
@@ -34,28 +35,28 @@ function find_trashes(){
 function CreateUser(){
     axios.post('/user/create',getValuesInputUser())
     .then(function (response) {
-      console.log(response);
+      ModalView('O usuário foi criado com sucesso',false,true);
     })
     .catch(function (error) {
-      console.log(error);
+      ModalView('Ocorreu um erro ao cadastrar o usuário, por favor, verifique os dados e tente novamente',false,true);
     });
 }
 
 
 function UpdateUser(){
-    axios.post('/user/update',getValuesInputUser())
+    axios.put('/user/update',getValuesInputUser())
     .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
+      
+      ModalView('Usuário Atualizado com Sucesso',false,true);
+
+    }).catch(function (error) {
+      ModalView('Ocorreu um erro ao atualizar os dados deste usuário',false,true);
     });
 }
 
 function ShowUserEdit(id){
     axios.get(`/user/info/${id}`)
     .then(function (response) {
-      console.log(response.data);
       document.getElementById('btn_form').setAttribute( "onClick", "UpdateUser()" );
           const status = document.getElementById("status").checked = response.data[0].status == 1 ? true : false;
            const user_id = document.getElementById("user_id").value = response.data[0].id;
@@ -66,14 +67,8 @@ function ShowUserEdit(id){
           
   
   
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-    .then(function () {
-      // always executed
     });
+   
 }
 
 
@@ -150,7 +145,7 @@ const password = document.getElementById("password").value;
 const id_trash_team = document.getElementById("id_trash_team").value;
 
 return {
-    user_id,
+id:user_id,
 name,
 user,
 password,

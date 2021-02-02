@@ -32,7 +32,7 @@ function GeraLixeiraHTML(dado){
       <h5 class="card-title">${dado.trash_name}</h5>
       <h6 class="card-subtitle mb-2 text-muted">Capacidade: ${dado.trash_capacity_used}/${dado.trash_max_support}L</h6>
       <p class="card-text">Endereço: ${dado.trash_address}</p>
-      <a href="/trash/info/${dado.id}" class="card-link">Ver mais informações...</a>
+      <a href="/trash/info/${dado.id}/index" class="card-link">Ver mais informações...</a>
     </div>
   </div>`
 

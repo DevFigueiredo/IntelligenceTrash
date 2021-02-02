@@ -29,6 +29,7 @@ Route::get('/trasheslist', [TrashController::class, 'indexTrashList']);
 Route::get('/trash/index', [TrashController::class, 'indexTrashView']);
 Route::get('/trash', [TrashController::class, 'index']);
 Route::get('/trash/info/{id}',[TrashController::class,'show']);
+Route::get('/trash/info/{id}/index',[TrashController::class,'indexView']);
 Route::post('/trash/create', [TrashController::class, 'create']);
 Route::put('/trash/update', [TrashController::class, 'update']);
 Route::post('/trash/add/capacity', [TrashController::class, 'AddCapacity']);
@@ -39,8 +40,6 @@ Route::get('/trash/history/{id_status_history}', [TrashHistoryController::class,
 Route::get('/trash/{id_trash}/history/', [TrashHistoryController::class, 'showHistoryToTrash']);
 Route::get('/trash/{id_trash}/history/{id_status_history}', [TrashHistoryController::class, 'showHistoryToHistoryToStatus']);
 Route::post('/trash/history/create', [TrashHistoryController::class, 'create']);
-
-
 
 
 Route::get('/region', [TrashRegionsController::class, 'index']);

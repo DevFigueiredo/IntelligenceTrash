@@ -1,3 +1,4 @@
+import('./index.js')
 
 window.onload = function() {
   find_trashes();
@@ -57,13 +58,6 @@ function show_trash_edit(id){
         
 
 
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .then(function () {
-    // always executed
   });
 }
 
@@ -111,10 +105,10 @@ function create_trash(){
 const values =  getInputValuesTrash();
  axios.post('/trash/create',values)
     .then(function (response) {
-      console.log(response);
+      ModalView('A Lixeira foi Cadastrada com Sucesso',false,true);
     })
     .catch(function (error) {
-      console.log(error);
+      ModalView('Ocorreu um erro ao Atualizar a Lixeira, verifique os dados e tente novamente',false,true);
     });
 
 }
@@ -125,10 +119,10 @@ function update_trash(){
   console.log(values);
  axios.put('/trash/update',values)
     .then(function (response) {
-      console.log(response);
+      ModalView('Lixeira Atualizada com Sucesso',false,true);
     })
     .catch(function (error) {
-      console.log(error);
+      ModalView('Ocorreu um erro ao Atualizar a Lixeira, verifique os dados e tente novamente',false,true);
     });
 
 }

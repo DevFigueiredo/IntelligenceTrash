@@ -12,7 +12,11 @@
 .bottomDiv{
   margin-bottom: 10px;
 }
+.w3-display-topright{position:absolute;right:0;top:0}
+.w3-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
 </style>
+<div id="form">
+
 <div class="row">
 <div class="card-body">
     <h5 class="card-title text-primary">Cadastro de Usuário</h5>
@@ -58,7 +62,7 @@
     <button type="submit" class="btn btn-primary" id="btn_form" onclick="CreateUser()">Registrar Informação</button>
 </div>
 </div>
-
+</div>
 
 <div id="showUsers"></div>
 
@@ -69,9 +73,6 @@
 <br>
 
 
-
-
-<div id="showTrashes"></div>
 
 
 

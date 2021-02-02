@@ -84,7 +84,6 @@
 
 
 
-<script src="{{asset('/js/trashes_list.js')}}"></script>
 
   
 @stop
