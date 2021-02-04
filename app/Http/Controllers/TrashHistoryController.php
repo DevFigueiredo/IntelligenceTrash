@@ -11,6 +11,15 @@ use App\Models\TrashHistoryModel;
 class TrashHistoryController extends Controller
 {
 
+
+   public function __construct()
+   {
+    $this->middleware('UserPermissions');    
+    }
+
+
+
+
     function create(Request $request)
     {
       $trash_history_description = $request->input('trash_history_description');
@@ -54,7 +63,7 @@ class TrashHistoryController extends Controller
         ->where('id_trash', $id_trash);
            }  
 
-           function showHistoryToHistoryToStatus($id_status_history, $id_trash){ 
+    function showHistoryToHistoryToStatus($id_status_history, $id_trash){ 
             return DB::table('trash_history')
             ->leftJoin('trash_history_status', 'trash_history_status.id', '=', 'trash_history.id_history_status')
             ->leftJoin('users', 'users.id', '=', 'trash_history.id_user')
@@ -64,26 +73,56 @@ class TrashHistoryController extends Controller
             ->where('id_trash', $id_trash);
                }
 
+   
 
    function ShowHistoryTimestamp(Request $request){
-      $tempo = input('timestamp');
+      
+      $tempo = $request->input('timestamp');
+      $id = $request->input('id');
 
       switch($tempo){
          case 1:
-            return ShowHistoryTimestampOneHour();
+            return json_encode(ShowHistoryTimestampOneHour($id));
+            break;
          case 2:
-            return ShowHistoryTimestampOneDay();
+            return json_encode(ShowHistoryTimestampOneDay($id));
+            break;
          case 3:
-            return ShowHistoryTimestampOneWeek();
+            return json_encode(ShowHistoryTimestampOneWeek($id));
+            break;
          default:
-            return "This is not a number dumbass.";
-      };
+            return "You're missing something...";
+            break;
+      }
+   
    }
+ 
 
-   function ShowHistoryTimestampOneHour(){
-      $used = DB::select("select * from trash_capacity_used");
-
-      dd($used);
-   }
     
+}
+
+
+
+
+
+function ShowHistoryTimestampOneHour($id){
+   $used = DB::select("select * from trash_capacity_used  where id_trash = $id and datetime(created_at) >= datetime(datetime('now', 'localtime'), '-1 Hour')");
+   //$used = DB::select("select datetime(datetime('now', 'localtime'), '-1 Hour');");
+   //$used = DB::select("select * from trash_capacity_used;");
+   return ($used);
+}
+
+function ShowHistoryTimestampOneDay($id){
+   $used = DB::select("select * from trash_capacity_used  where id_trash = $id and datetime(created_at) >= datetime(datetime('now', 'localtime'), '-1 Day')");
+   //$used = DB::select("select datetime(datetime('now', 'localtime'), '-1 Hour');");
+   //$used = DB::select("select * from trash_capacity_used;");
+   return ($used);
+}
+
+//Precisa refatorar essa função
+function ShowHistoryTimestampOneWeek($id){
+   $used = DB::select("select * from trash_capacity_used  where id_trash = $id and datetime(created_at) >= datetime(datetime('now', 'localtime'), '-1 Week')");
+   //$used = DB::select("select datetime(datetime('now', 'localtime'), '-1 Hour');");
+   //$used = DB::select("select * from trash_capacity_used;");
+   return ($used);
 }

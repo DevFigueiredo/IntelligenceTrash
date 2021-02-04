@@ -14,6 +14,7 @@ use App\Http\Controllers\TrashHistoryController;
 use App\Http\Controllers\TrashResponsability;
 use App\Http\Controllers\IndexController;
 
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -27,12 +28,13 @@ use App\Http\Controllers\IndexController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::post('/login',[UserController::class, 'Login']);
-Route::get('/logout',[UserController::class, 'Logout']);
 
 
+
+
+Route::get('/logout',[IndexController::class, 'logout']);
 Route::get('/',[IndexController::class, 'index']);
-Route::get('/negado',function(){return 'Acesso Negado';})->name('negado');
+Route::post('/',[IndexController::class, 'index'])->middleware('Login');
 
 
 Route::get('/dashboard',[DashboardController::class, 'index']);
@@ -55,8 +57,6 @@ Route::get('/trash/{id_trash}/history/', [TrashHistoryController::class, 'showHi
 Route::get('/trash/{id_trash}/history/{id_status_history}', [TrashHistoryController::class, 'showHistoryToHistoryToStatus']);
 Route::post('/trash/history/create', [TrashHistoryController::class, 'create']);
 Route::post('/trash/history/info', [TrashHistoryController::class, 'ShowHistoryTimestamp']);
-Route::post('/organization/update', [TrashOrganizationController::class, 'update']);
-Route::delete('/organization/delete', [TrashOrganizationController::class, 'delete']);
 
 Route::get('/user', [UserController::class, 'index']);
 Route::get('/user/index', [UserController::class, 'indexView']);
@@ -73,5 +73,17 @@ Route::delete('/team/delete', [TrashTeamUsersController::class, 'delete']);
 Route::get('/team/info/{id_team}', [TrashTeamUsersController::class, 'show']);
 
 
+
+Route::get('/region', [TrashRegionsController::class, 'index']);
+Route::get('/region/all', [TrashRegionsController::class, 'findAll']);
+Route::post('/region/info', [TrashRegionsController::class, 'find']);
+Route::post('/region/create', [TrashRegionsController::class, 'create']);
+Route::post('/region/update', [TrashRegionsController::class, 'update']);
+Route::delete('/region/delete', [TrashRegionsController::class, 'delete']);
+
+Route::get('/organization', [TrashOrganizationController::class, 'index']);
+Route::get('/organization/index', [TrashOrganizationController::class, 'indexView']);
+Route::post('/organization/info', [TrashOrganizationController::class, 'find']);
+Route::post('/organization/create', [TrashOrganizationController::class, 'create']);
 
 Route::get('/responsability/index', [TrashResponsability::class, 'indexView']);

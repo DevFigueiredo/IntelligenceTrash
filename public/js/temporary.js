@@ -31,4 +31,4 @@ function create_capacity_random(){
 
 create_capacity_random()
 
-setInterval(create_capacity_random,30000);
+setInterval(create_capacity_random,10000);

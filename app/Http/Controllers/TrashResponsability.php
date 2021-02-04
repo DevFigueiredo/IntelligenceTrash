@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 
 class TrashResponsability extends Controller
 {
+
+
+    public function __construct()
+    {
+     $this->middleware('UserPermissions');    
+     }
+ 
+
+
+
     public function create(Request $request)
     {
         

@@ -7,6 +7,17 @@ use App\Models\TrashOrganizationModel;
 
 class TrashOrganizationController extends Controller
 {
+
+
+    public function __construct()
+    {
+     $this->middleware('UserPermissions');    
+     }
+ 
+
+
+
+
   function create(Request $request)
     {
         $description = $request->input('description');

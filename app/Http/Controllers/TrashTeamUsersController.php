@@ -8,6 +8,11 @@ use App\Models\TrashTeamUsersModel;
 
 class TrashTeamUsersController extends Controller
 {
+
+
+
+
+    
     function create(Request $request)
     {
         $description = $request->input('description');

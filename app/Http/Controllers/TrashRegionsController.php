@@ -7,12 +7,14 @@ use App\Models\TrashRegionsModel;
 
 class TrashRegionsController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+  
+    
+    public function __construct()
+    {
+     $this->middleware('UserPermissions');    
+     }
+
+
     
 
      function index(){

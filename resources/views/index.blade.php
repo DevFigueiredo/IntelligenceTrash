@@ -35,14 +35,14 @@
     <div class="card">
 <article class="card-body">
 <h4 class="card-title mb-4 mt-1">DJ Soluções</h4>
-	 <form method="get" action="/dashboard">
-    <div class="form-group">
+	 <form method="post" action="/">
+    <div class="form-group" >
     	<label>Login</label>
-        <input name="" class="form-control" placeholder="Login" type="email">
+        <input name="user" class="form-control" placeholder="Login" type="text">
     </div> <!-- form-group// -->
     <div class="form-group">
     	<label>Senha</label>
-        <input class="form-control" placeholder="******" type="password">
+        <input class="form-control" name="password" placeholder="******" type="password">
     </div> <!-- form-group// --> 
     <div class="form-group"> 
     <div class="checkbox">

@@ -27,14 +27,13 @@ ready(() => {
 //=============================================================================================================================================================================================================
 // Grafico capacidade em tempo real
 var ArrayLixeiraGrafico = [['Horario', 'Capacidade']]
-var ArrayLixeiraGraficoTempo = [['Horario', 'Capacidade'],['12',12]]
+var ArrayLixeiraGraficoTempo = [['Horario', 'Capacidade']]
 
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(LixeiraGrafico);
 
 function LixeiraGrafico(dados = []) {
 
-    console.log(dados)
     if(dados.length != 0){
         ArrayLixeiraGrafico.push(dados)
     }
@@ -60,9 +59,40 @@ function LixeiraGrafico(dados = []) {
 //=============================================================================================================================================================================================================
 // Grafico por tempo
       google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(LixeiraGraficoTempo);
 
-      function drawChart(dados = [], titulo="Capacidade da Lixeira") {
+      function GraficoIntervalo(tempo,tipo){
+
+        let url = "/trash/history/info";
+        let myinit = {
+        method : 'POST',
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+                },
+            body: JSON.stringify({'timestamp': parseInt(tempo),
+                                  'id': trash_id.value
+            }),
+        }
+
+        fetch(url,myinit)
+        .then(function(response){
+            response.json().then(function(dado){
+                if(tipo == 1){
+                dado.map((dados)=>{
+                    LixeiraGraficoTempo([dados.created_at,parseInt(dados.trash_capacity_used)])
+                })
+            }
+            if(tipo == 2){
+                alasql('SELECT * INTO XLSX("arquivo.xlsx", {headers: true}) FROM ?', [dado]);
+            }
+            })
+        })
+
+
+      }
+      
+      function LixeiraGraficoTempo(dados = [], titulo="Capacidade da Lixeira") {
 
         if(dados.length != 0){
             ArrayLixeiraGraficoTempo.push(dados)
@@ -83,3 +113,4 @@ function LixeiraGrafico(dados = []) {
 
 
 
+      

@@ -9,8 +9,15 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
+    
+    
+ 
     function index(){
         return view('/index',['title'=>'Inicio']);
     }
+
+    function logout(Request $request){
+        $request->session()->flush();
+        return redirect('/');    }
 
 }
