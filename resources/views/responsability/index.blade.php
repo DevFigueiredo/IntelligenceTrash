@@ -16,13 +16,14 @@ Selecione o Time
 </div>
 <div class="row">
 <div class="col-10">
-<select class="form-select" id="time" >
+<select class="form-select" id="teams" >
+  <option>Selecione a Região</option>
 
 </select>
 </div>
 
 <div class="col-1">
-<button type="button" class="btn btn-secondary" ><i class="fa fa-search" aria-hidden="true"></i></button>
+<button type="button" class="btn btn-secondary" onclick="GetResponsabilities()"><i class="fa fa-search" aria-hidden="true"></i></button>
 </div>
 </div>
 </div>
@@ -34,13 +35,8 @@ Selecione o Time
 <div class="row">
 <div class="col-4" style="margin-top: 60px">
 Selecione a Região
-<select class="form-select" id="region" disabled>
+<select class="form-select" id="region" onChange="GetTrashesOfRegions()" disabled>
   <option>Selecione a Região</option>
-  <option value="1">Zona TAl</option>
-  <option value="2">Zona TAl</option>
-  <option value="3">Zona TAl</option>
-  <option value="5">Zona TAl</option>
-  <option value="6">Zona TAl</option>
 
 </select>
 
@@ -49,17 +45,12 @@ Selecione a Região
 Selecione a Lixeira
 <select class="form-select" id="trash" disabled>
   <option>Selecione a Lixeira</option>
-  <option value="1">Zona TAl</option>
-  <option value="2">Zona TAl</option>
-  <option value="3">Zona TAl</option>
-  <option value="5">Zona TAl</option>
-  <option value="6">Zona TAl</option>
 
 </select>
 
 </div>
 <div class="col-4" style="margin-top: 83px">
-<button type="button" class="btn btn-secondary">Adicionar Responsabilidade</button>
+<button type="button" class="btn btn-secondary" >Adicionar Responsabilidade</button>
 </div>
 
 
@@ -95,31 +86,5 @@ Selecione a Lixeira
 </div>
 
 
-  <script>
-  $(function() {
-    $('#time').selectize({
-      create: function(input,callback){
-        callback({value: '1', text: 'TESTE'});
-
-   }
-    });
-  });
-  var $select = $('#select-tools').selectize({
-					maxItems: null,
-					valueField: 'id',
-					labelField: 'title',
-					searchField: 'title',
-					options: [
-						{id: 1, title: 'Spectrometer', url: 'http://en.wikipedia.org/wiki/Spectrometers'},
-						{id: 2, title: 'Star Chart', url: 'http://en.wikipedia.org/wiki/Star_chart'},
-						{id: 3, title: 'Electrical Tape', url: 'http://en.wikipedia.org/wiki/Electrical_tape'}
-					],
-					create: false
-				});
-
-  
- 
-  
-  </script>
 @endsection
 

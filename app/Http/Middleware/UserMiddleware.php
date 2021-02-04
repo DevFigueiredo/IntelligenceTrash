@@ -19,8 +19,8 @@ class UserMiddleware
     //return response($request->session()->get('id'));
         if($request->session()->get('id')==true)
       return $next($request);
-   // else 
-    //return redirect('/');
+      else 
+      return redirect('/');
     
     
     }

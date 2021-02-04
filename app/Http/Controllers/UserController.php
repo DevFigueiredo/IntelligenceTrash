@@ -9,7 +9,13 @@ use App\Models\UserModel;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+     $this->middleware('UserPermissions');    
+     }
  
+
  
 
     public function create(Request $request)

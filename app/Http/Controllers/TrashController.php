@@ -119,9 +119,11 @@ class TrashController extends Controller
         max(a.id) as last_capacity_id
         , a.trash_capacity_used
         ,a.created_at as last_created_capacity 
-        , b.*  
+        , b.* 
+        ,c.trash_regions_description
         FROM trash_capacity_used  as a
         LEFT JOIN trash as b on b.id=a.id_trash
+        LEFT JOIN trash_regions as c on c.id=b.id_trash_region
         GROUP BY id_trash");
         return $trashes;
     

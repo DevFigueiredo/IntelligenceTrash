@@ -70,7 +70,7 @@
       </button>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Sair</a>
+          <a class="nav-link" href="/logout">Sair</a>
         </li>
       </ul>
     </nav>
@@ -159,7 +159,7 @@
         <ul class="nav flex-column mb-2">
     
     <li class="nav-item">
-      <a class="nav-link" href="/trasheslist">
+      <a class="nav-link" href="/responsability/index">
         <span data-feather="file"></span>
          Responsabilidade
       </a>
