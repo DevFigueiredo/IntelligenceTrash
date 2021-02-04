@@ -12,8 +12,20 @@
 </div>
 </div>
 
+
+
+
 <script src="{{asset('/js/trashes_list.js')}}"></script>
 
+<script>
+ready = (callback) => {
+    if (document.readyState != "loading") callback();
+    else document.addEventListener("DOMContentLoaded", callback);
+}
+ready(() => {
+  find_all_trashes_in_map()
+});
+</script>
 @endsection
 
 

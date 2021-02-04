@@ -1,6 +1,6 @@
 function create_capacity_random(){
-    var capacidade = Math.trunc(Math.random() * (40 - 30) + 30);
-    var lixeira = Math.trunc(Math.random() * (40 - 30) + 30); 
+    var capacidade = Math.trunc(Math.random() * (1 - 30) + 30);
+    var lixeira = Math.trunc(Math.random() * (1 - 30) + 30); 
 
 //console.log(`Capacida utilizada ${capacidade} - Lixeira utilizada ${lixeira}`)
 
@@ -31,4 +31,4 @@ function create_capacity_random(){
 
 create_capacity_random()
 
-setInterval(create_capacity_random,3000);
+setInterval(create_capacity_random,30000);

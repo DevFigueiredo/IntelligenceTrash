@@ -7,15 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 
-class DashboardController extends Controller
+class TrashResponsability extends Controller
 {
-
-    public function __construct()
-    {
-     $this->middleware('AuthUser');    
-     }
- 
-
     public function create(Request $request)
     {
         
@@ -39,8 +32,8 @@ class DashboardController extends Controller
         
     }
     
-    function index(){
-        return view('/dashboard/index',['title'=>'Dashboard','title2'=>'oi']);
+    function indexView(){
+        return view('/responsability/index',['title'=>'Responsabilidade do Time']);
     }
 
     function indexTrashList(){

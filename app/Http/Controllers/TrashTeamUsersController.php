@@ -47,4 +47,19 @@ class TrashTeamUsersController extends Controller
         $TrashTeamUsers = new TrashTeamUsersModel;
         return $TrashTeamUsers->get();     
        }
+
+     function show($id){
+        $TrashTeamUsers = new TrashTeamUsersModel;
+        return $TrashTeamUsers
+        ->where('id', $id)
+        ->get();     
+       }
+
+
+       function indexView(Request $request){
+        
+        return view('/team/index',['title'=>'Regiões']);
+
+    
+    }
 }

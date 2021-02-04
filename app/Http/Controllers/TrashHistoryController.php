@@ -63,5 +63,27 @@ class TrashHistoryController extends Controller
             ->where('id_history_status', $id_status_history)
             ->where('id_trash', $id_trash);
                }
+
+
+   function ShowHistoryTimestamp(Request $request){
+      $tempo = input('timestamp');
+
+      switch($tempo){
+         case 1:
+            return ShowHistoryTimestampOneHour();
+         case 2:
+            return ShowHistoryTimestampOneDay();
+         case 3:
+            return ShowHistoryTimestampOneWeek();
+         default:
+            return "This is not a number dumbass.";
+      };
+   }
+
+   function ShowHistoryTimestampOneHour(){
+      $used = DB::select("select * from trash_capacity_used");
+
+      dd($used);
+   }
     
-        }
+}

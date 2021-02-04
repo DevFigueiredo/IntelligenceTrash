@@ -135,9 +135,7 @@ class TrashController extends Controller
 
 
     function indexTrashList(){
-
         return view('/trasheslist/index',['title'=>'Listagem de Lixeiras','title2'=>'oi']);
-
     }
 
     function indexView($id){
@@ -159,4 +157,14 @@ class TrashController extends Controller
         $trash = json_decode(json_encode($trashes),true);
         return view('/trash/trash_unique',['title'=>$trash[0]['trash_name'],'trash'=>$trash[0]]);
     }
+
+    /*
+    function ShowCapacityUsedTrash(Request $request){
+        $id_trash = input('id_trash');
+
+        $trash_capacity_info = DB::select("select * from trash_capacity_used where id_trash = $id_trash");
+
+        return json_encode($trash_capacity_info)
+    }*/
+
 }

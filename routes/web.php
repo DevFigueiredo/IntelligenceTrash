@@ -11,7 +11,12 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TrashTeamUsersController;
 use App\Http\Controllers\TrashHistoryController;
+use App\Http\Controllers\TrashResponsability;
 use App\Http\Controllers\IndexController;
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,8 +27,17 @@ use App\Http\Controllers\IndexController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/dashboard',[DashboardController::class, 'index']);
+Route::post('/login',[UserController::class, 'Login']);
+Route::get('/logout',[UserController::class, 'Logout']);
+
+
 Route::get('/',[IndexController::class, 'index']);
+Route::get('/negado',function(){return 'Acesso Negado';})->name('negado');
+
+
+Route::get('/dashboard',[DashboardController::class, 'index']);
+
+
 
 Route::get('/trasheslist', [TrashController::class, 'indexTrashList']);
 Route::get('/trash/index', [TrashController::class, 'indexTrashView']);
@@ -40,19 +54,7 @@ Route::get('/trash/history/{id_status_history}', [TrashHistoryController::class,
 Route::get('/trash/{id_trash}/history/', [TrashHistoryController::class, 'showHistoryToTrash']);
 Route::get('/trash/{id_trash}/history/{id_status_history}', [TrashHistoryController::class, 'showHistoryToHistoryToStatus']);
 Route::post('/trash/history/create', [TrashHistoryController::class, 'create']);
-
-
-Route::get('/region', [TrashRegionsController::class, 'index']);
-Route::get('/region/all', [TrashRegionsController::class, 'findAll']);
-Route::post('/region/info', [TrashRegionsController::class, 'find']);
-Route::post('/region/create', [TrashRegionsController::class, 'create']);
-Route::post('/region/update', [TrashRegionsController::class, 'update']);
-Route::delete('/region/delete', [TrashRegionsController::class, 'delete']);
-
-Route::get('/organization', [TrashOrganizationController::class, 'index']);
-Route::get('/organization/index', [TrashOrganizationController::class, 'indexView']);
-Route::post('/organization/info', [TrashOrganizationController::class, 'find']);
-Route::post('/organization/create', [TrashOrganizationController::class, 'create']);
+Route::post('/trash/history/info', [TrashHistoryController::class, 'ShowHistoryTimestamp']);
 Route::post('/organization/update', [TrashOrganizationController::class, 'update']);
 Route::delete('/organization/delete', [TrashOrganizationController::class, 'delete']);
 
@@ -64,6 +66,12 @@ Route::put('/user/update', [UserController::class, 'update']);
 Route::delete('/user/delete', [UserController::class, 'delete']);
 
 Route::get('/team', [TrashTeamUsersController::class, 'index']);
+Route::get('/team/index', [TrashTeamUsersController::class, 'indexView']);
 Route::post('/team/create', [TrashTeamUsersController::class, 'create']);
 Route::put('/team/update', [TrashTeamUsersController::class, 'update']);
 Route::delete('/team/delete', [TrashTeamUsersController::class, 'delete']);
+Route::get('/team/info/{id_team}', [TrashTeamUsersController::class, 'show']);
+
+
+
+Route::get('/responsability/index', [TrashResponsability::class, 'indexView']);

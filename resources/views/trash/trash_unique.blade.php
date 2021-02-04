@@ -2,10 +2,13 @@
 
 
 @section('content')
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="{{asset('/js/trash_unique.js')}}"></script>
 
 <div class="container">
     <div style="float:left;">
         <div class="card text-center">
+        <input type="hidden" name="id" value="{{$trash['id']}}" id="trash_id">
         <div class="card-header">
             <b>{{$trash['trash_name']}}</b>
         </div>
@@ -25,7 +28,7 @@
             </br>
         </div>
         <div class="card-footer text-muted">
-            {{$trash['created_at']}}
+            <b>Criado em: </b>{{$trash['created_at']}}
         </div>
         </div>
     </div>
@@ -46,46 +49,28 @@
 </div>
 
 
-<div style="display: none; margin-top: 10px;">
-    AEEEEEEEEEEEEEEEEEEEE CARAIO
+<div style="display: block; margin-top: 10px;">
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+    </hr>
+    <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" onclick="GraficoIntervalo(1)">1 Hora</button>
+        <button type="button" class="btn btn-secondary" onclick="GraficoIntervalo(2)">1 Dia</button>
+        <button type="button" class="btn btn-secondary" onclick="GraficoIntervalo(3)">1 Semana</button>
+    </div>
+    <div id="chart_div2" style="width: 900px; height: 500px;"></div>
 </div>
-
+<hr>
 <div style="display: block; margin-top: 10px;">
     Mostra esse
 </div>
 
+
+
+
+<script src="{{asset('/js/trashes_list.js')}}"></script>
+
 <script>
-ready = (callback) => {
-    if (document.readyState != "loading") callback();
-    else document.addEventListener("DOMContentLoaded", callback);
-}
-ready(() => {
-//Importando a biblioteca do Maps
-var map = L.map('mapid').setView([{{$trash['trash_latitude']}}, {{$trash['trash_latitude']}}], 15);
 
-
-//Link da APi que retorna a renderização do mapa
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
-
-//Aqui estou definindo algumas regras para o icone que irá aparecer no mapa
-var LeafIcon = L.Icon.extend({
-    options: {
-        iconSize:     [48, 45],
-        shadowSize:   [50, 64],
-        iconAnchor:   [22, 94],
-        shadowAnchor: [4, 62],
-        popupAnchor:  [-3, -76]
-    }
-});
-
-L.marker([{{$trash['trash_latitude']}}, {{$trash['trash_latitude']}}])
-.addTo(map)
-.bindPopup("<b>Hello world!</b><br>I am a popup.")
-.openPopup();
-
-})
 </script>
 
 

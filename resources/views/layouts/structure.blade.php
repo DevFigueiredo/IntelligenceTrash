@@ -11,6 +11,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
+
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/js/standalone/selectize.min.js"></script>
+
+
+
     <!-- Bootstrap core CSS -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
@@ -70,14 +80,33 @@
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="/dashboard">
-              <span data-feather="home"></span>
-              Dashboard <span class="sr-only">(current)</span>
+    
+        <li class="nav-item">
+            <a class="nav-link" href="/dashboard">
+              <span data-feather="file"></span>
+              Dashboard
             </a>
           </li>
           
+              <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Monitoramento</span>
+          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+ 
+         <ul class="nav flex-column mb-2">
+    
+          <li class="nav-item">
+            <a class="nav-link" href="/trasheslist">
+              <span data-feather="file"></span>
+              Mapa de Lixeiras
+            </a>
+          </li>
           
+         
+         
+         
           
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>Cadastro</span>
@@ -97,6 +126,14 @@
           </li>
 
           <li class="nav-item">
+            <a class="nav-link" href="/team/index">
+              <span data-feather="file"></span>
+              Times
+            </a>
+          </li>
+
+
+          <li class="nav-item">
             <a class="nav-link" href="/trash/index">
               <span data-feather="shopping-cart"></span>
                Lixeiras
@@ -111,33 +148,30 @@
           </li>
 
 
-          <li class="nav-item">
-            <a class="nav-link" href="/organization/index">
-              <span data-feather="file"></span>
-              Organizações
-            </a>
-          </li>
+       </ul>
 
-          
-          
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Monitoramento</span>
+       <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Vinculos</span>
           <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
             <span data-feather="plus-circle"></span>
           </a>
         </h6>
- 
-         <ul class="nav flex-column mb-2">
+        <ul class="nav flex-column mb-2">
     
-          <li class="nav-item">
-            <a class="nav-link" href="/trasheslist">
-              <span data-feather="file"></span>
-              Mapa de Lixeiras
-            </a>
-          </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/trasheslist">
+        <span data-feather="file"></span>
+         Responsabilidade
+      </a>
+    </li>
+    
+   
+  </ul>
+
+
+
           
-         
-        </ul>
+
       </div>
     </nav>
 
@@ -165,7 +199,7 @@
 </div>
 
 
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
         <script src="{{asset('js/index.js')}}"></script></body>

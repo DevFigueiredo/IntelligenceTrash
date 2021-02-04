@@ -9,6 +9,9 @@ use App\Models\UserModel;
 
 class UserController extends Controller
 {
+ 
+ 
+
     public function create(Request $request)
     {
         $name = $request->input('name');
@@ -78,7 +81,70 @@ class UserController extends Controller
     }
     
 
+
+
+
+
+
+
+
+    /*Autenticação do Usuário abaixo */
+
+    public function Login(Request $request){
+        $user = $request->input('user');
+        $password = $request->input('password');
+    
+
+        if(isset($user) && $password){
+    
+       $login = ["user"=>$user];
+
+       $request->session()->put('login', $login);
+
+
+       return response("Login: OK", 200);
+       
+    
+    
+    
+    }else{
+            $request->session()->flush();
+            return response("Erro no Login",404);
+        }
+        
+    
     }
+
+
+
+
+    public function Logout(Request $request){
+        $request->session()->flush();
+        return response('Deslogado com Sucesso!', 200);
+    
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
 
 
 
