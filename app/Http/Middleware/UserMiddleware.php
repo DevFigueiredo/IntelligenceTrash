@@ -16,6 +16,7 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next)
     {      
+//DESABILITAR A OPÇÃO
     //return response($request->session()->get('id'));
         if($request->session()->get('id')==true)
       return $next($request);

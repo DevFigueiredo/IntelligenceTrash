@@ -69,7 +69,27 @@
 </div>
 <hr>
 <div style="display: block; margin-top: 10px;">
-    Mostra esse
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Data</th>
+      <th scope="col">Usuário</th>
+      <th scope="col">Status</th>
+      <th scope="col">Descrição</th>
+    </tr>
+  </thead>
+  <tbody id="tabela_info">
+    <tr>
+    <td>
+    </td>
+    <td>
+        Sem informações...
+    </td>
+    </tr>
+  </tbody>
+</table>
+
+
 </div>
 
 

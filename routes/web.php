@@ -57,6 +57,7 @@ Route::get('/trash/{id_trash}/history/', [TrashHistoryController::class, 'showHi
 Route::get('/trash/{id_trash}/history/{id_status_history}', [TrashHistoryController::class, 'showHistoryToHistoryToStatus']);
 Route::post('/trash/history/create', [TrashHistoryController::class, 'create']);
 Route::post('/trash/history/info', [TrashHistoryController::class, 'ShowHistoryTimestamp']);
+Route::post('/trash/history/table', [TrashHistoryController::class, 'ShowHistoryTable']);
 
 Route::get('/user', [UserController::class, 'index']);
 Route::get('/user/index', [UserController::class, 'indexView']);
@@ -66,6 +67,7 @@ Route::put('/user/update', [UserController::class, 'update']);
 Route::delete('/user/delete', [UserController::class, 'delete']);
 
 Route::get('/team', [TrashTeamUsersController::class, 'index']);
+Route::get('/team/permissions', [TrashTeamUsersController::class, 'IndexViewPermissions']);
 Route::get('/team/index', [TrashTeamUsersController::class, 'indexView']);
 Route::post('/team/create', [TrashTeamUsersController::class, 'create']);
 Route::put('/team/update', [TrashTeamUsersController::class, 'update']);
@@ -87,3 +89,7 @@ Route::post('/organization/info', [TrashOrganizationController::class, 'find']);
 Route::post('/organization/create', [TrashOrganizationController::class, 'create']);
 
 Route::get('/responsability/index', [TrashResponsability::class, 'indexView']);
+Route::get('/responsability', [TrashResponsability::class, 'index']);
+Route::get('/responsability/team/{team_id}', [TrashResponsability::class, 'indexResponsabilityTeam']);
+Route::post('/responsability/create/team/{team_id}', [TrashResponsability::class, 'create']);
+Route::post('/responsability/update', [TrashResponsability::class, 'update']);

@@ -46,7 +46,9 @@
       <div class="row align-self-stretch" id="cards-lixeira">
         
       </div>
+     <a href="/trasheslist">
       <button class="btn btn-primary" style="float: right;">Ver mais Lixeiras...</button>
+      </a>
     </div>
     </div>
 

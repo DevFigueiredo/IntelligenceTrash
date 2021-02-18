@@ -1,15 +1,7 @@
 
 
 
-
-
-
-
-
-
-
-
-function find_all_trashes_in_map(){
+async function find_all_trashes_in_map(cmd = ""){
  
 //É realizado uma busca na nossa base de dados para ver quais as lixeiras cadastradas 
 axios.get('/trash')
@@ -18,8 +10,9 @@ axios.get('/trash')
 
  //Importando a biblioteca do Maps
 
- var map = L.map('mapid').setView([-23.7215727, -45.440392], 15);
-
+ var map = L.map('mapid')
+ map.setView([-23.7215727, -45.440392], 15);
+ 
  //Link da APi que retorna a renderização do mapa
  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -41,7 +34,7 @@ axios.get('/trash')
 
   //Armazeno as lixeiras na constante
   const trashes = response.data;
-
+if(cmd == ""){
   //Percorro pelas lixeiras e marco no mapa utilizando a latitude e longitude com a função da biblioteca cada vez que o loop passa por uma lixeira
   trashes.map(trash=>{
 //Função que marca no mapa      
@@ -51,7 +44,19 @@ L.marker([trash.trash_latitude, trash.trash_longitude])
 .openPopup();
   })
   
+
+ // L.removeLayer();
+  
+  
+
+
+}else{
+  //map.off();
+  //map.remove();
+}
 })
+
+
 }
 
 

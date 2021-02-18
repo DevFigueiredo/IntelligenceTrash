@@ -7,13 +7,13 @@ use App\Models\TrashRegionsModel;
 
 class TrashRegionsController extends Controller
 {
-  
+  /*
     
     public function __construct()
     {
      $this->middleware('UserPermissions');    
      }
-
+*/
 
     
 

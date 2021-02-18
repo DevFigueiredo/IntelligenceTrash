@@ -11,7 +11,6 @@ use App\Models\TrashHistoryModel;
 class TrashHistoryController extends Controller
 {
 
-
    public function __construct()
    {
     $this->middleware('UserPermissions');    
@@ -96,6 +95,14 @@ class TrashHistoryController extends Controller
       }
    
    }
+
+   function ShowHistoryTable(Request $request){
+      $id_trash = $request->input("id_trash");
+
+      $history = DB::select("select a.*, b.trash_history_status_description, c.name from trash_history as a inner join trash_history_status as b on (a.id_history_status = b.id) inner join users as c on (a.id_user = c.id) where id_trash = $id_trash");
+
+      return $history;
+   }
  
 
     
@@ -113,7 +120,7 @@ function ShowHistoryTimestampOneHour($id){
 }
 
 function ShowHistoryTimestampOneDay($id){
-   $used = DB::select("select * from trash_capacity_used  where id_trash = $id and datetime(created_at) >= datetime(datetime('now', 'localtime'), '-1 Day')");
+   $used = DB::select("select * from trash_capacity_used  where id_trash = $id and datetime(created_at) >= datetime(datetime('now', 'localtime'), '-24 Hour')");
    //$used = DB::select("select datetime(datetime('now', 'localtime'), '-1 Hour');");
    //$used = DB::select("select * from trash_capacity_used;");
    return ($used);

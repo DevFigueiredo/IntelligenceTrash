@@ -8,6 +8,7 @@ use Database\Seeders\trash_organization;
 use Database\Seeders\trash_team_users;
 use Database\Seeders\trash;
 use Database\Seeders\trash_history_status;
+use Database\Seeders\trash_history;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(trash_team_users::class);
         $this->call(trash::class);
         $this->call(trash_history_status::class);
+        $this->call(trash_history::class);
         // \App\Models\User::factory(10)->create();
     }
 }

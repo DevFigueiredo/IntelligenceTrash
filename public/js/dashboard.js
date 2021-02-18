@@ -29,7 +29,8 @@ var ArrayLixeiraCheiaGrafico = [['Horario', 'Lixeiras Cheias']]
 function GeraLixeiraHTML(dado){
     var cor = "";
 
-    (dado.trash_capacity_used>(dado.trash_max_support/2)) ? cor = "red" : cor = "green" 
+    
+    (dado.trash_capacity_used>(dado.trash_max_support/2)) ? cor = "red": cor = "green" 
 
     var conteudo = `<div class="col-md-3">
     <div class="card" style="width: 13.5rem; margin-top: 3vh;">

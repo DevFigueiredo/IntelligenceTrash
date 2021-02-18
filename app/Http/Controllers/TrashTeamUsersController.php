@@ -73,4 +73,8 @@ class TrashTeamUsersController extends Controller
 
     
     }
+
+    function IndexViewPermissions(){
+        return view('/team_permissions/index',['title'=>'Permissões']);
+    }
 }

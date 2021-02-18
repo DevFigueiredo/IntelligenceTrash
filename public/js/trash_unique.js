@@ -18,7 +18,8 @@ ready(() => {
             })//
         })
     }
-    
+
+    GetTableInfo()
     AtualizaGraficoLive()
     setInterval(AtualizaGraficoLive,30000)
 
@@ -79,6 +80,7 @@ function LixeiraGrafico(dados = []) {
         .then(function(response){
             response.json().then(function(dado){
                 if(tipo == 1){
+                    ArrayLixeiraGraficoTempo = [['Horario', 'Capacidade']]
                 dado.map((dados)=>{
                     LixeiraGraficoTempo([dados.created_at,parseInt(dados.trash_capacity_used)])
                 })
@@ -93,9 +95,10 @@ function LixeiraGrafico(dados = []) {
       }
       
       function LixeiraGraficoTempo(dados = [], titulo="Capacidade da Lixeira") {
-
+        
         if(dados.length != 0){
             ArrayLixeiraGraficoTempo.push(dados)
+            console.log(ArrayLixeiraGraficoTempo)
         }
         
         var data = google.visualization.arrayToDataTable(ArrayLixeiraGraficoTempo);
@@ -110,6 +113,48 @@ function LixeiraGrafico(dados = []) {
 
         chart.draw(data, options);
       }
+
+
+      function GetTableInfo(){
+         
+        let url = "/trash/history/table";
+        let myinit = {
+        method : 'POST',
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+                },
+            body: JSON.stringify({'id_trash': trash_id.value
+            }),
+        }
+
+        fetch(url,myinit)
+        .then(function(response){
+            response.json().then(function(dado){
+                OrganizaHTMLTabela(dado)
+            })
+        })
+
+      }
+
+      function OrganizaHTMLTabela(dados){
+        var tabela = document.querySelector("#tabela_info")
+        
+        tabela.innerHTML = "";
+        
+        dados.map((dado)=>{
+            var html = ` <tr>
+                            <th>${dado.created_at}</th>
+                            <td>${dado.name}</td>
+                            <td>${dado.trash_history_status_description}</td>
+                            <td>${dado.trash_history_description}</td>
+                        </tr>`
+            
+            tabela.innerHTML += html
+        })
+      }
+
+      
 
 
 

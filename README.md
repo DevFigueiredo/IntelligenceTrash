@@ -12,3 +12,5 @@ Caso precise de contato conosco envie uma mensagem em nosso e-mail eletronico [F
 
 
 Este é um projeto do Tecnólogo em Analise e Desenvolvimento de Sistemas do Instituto Federal de Educação, Ciência e Tecnologia de São Paulo - Campus Caraguatauba [IFSP-CAR](https://ifspcaraguatatuba.edu.br).
+> Usuário: suporte
+> Senha: 1234

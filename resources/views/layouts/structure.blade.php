@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
     <!-- Make sure you put this AFTER Leaflet's CSS -->
  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
@@ -158,10 +159,16 @@
         </h6>
         <ul class="nav flex-column mb-2">
     
-    <li class="nav-item">
+        <li class="nav-item">
       <a class="nav-link" href="/responsability/index">
         <span data-feather="file"></span>
          Responsabilidade
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/team/permissions">
+        <span data-feather="file"></span>
+         Permissões de Acesso
       </a>
     </li>
     

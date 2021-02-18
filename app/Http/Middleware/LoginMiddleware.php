@@ -18,20 +18,25 @@ class LoginMiddleware
     
     public function handle(Request $request, Closure $next)
     {
+
        $user = $request->input('user');
        $password = $request->input('password');
-       
-      $userData = findUser($user);
-    
+     
+       //Buscando no Banco o Usuário que chegou na requisição
+     $userData = findUser($user);
+
+
+
+     if(sizeof($userData)!=0){
      $login = ["user"=>$userData[0]->user, "name"=>$userData[0]->name, "id"=>$userData[0]->id, "id_trash_team"=>$userData[0]->id_trash_team];
      
      if($password === $userData[0]->password){
        $request->session()->put($login);
        return redirect('/dashboard');
      //  return $next($request);
-  
+      } 
     }else{
-          $request->session()->flush();
+        $request->session()->flush();
           return redirect('/');
 
       }
