@@ -63,39 +63,58 @@ function LixeiraGrafico(dados = []) {
       google.charts.setOnLoadCallback(LixeiraGraficoTempo);
 
       function GraficoIntervalo(tempo,tipo){
+        var TempoRealDiv = document.getElementById("chart_div")
+        var NormalDiv = document.getElementById("chart_div2")
+        if(tempo == 4){
+            
+            if(TempoRealDiv.classList.contains("d-none")){
+              TempoRealDiv.classList.remove("d-none")
+              NormalDiv.classList.add("d-none")
+            }
 
-        let url = "/trash/history/info";
-        let myinit = {
-        method : 'POST',
-        headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-                },
-            body: JSON.stringify({'timestamp': parseInt(tempo),
-                                  'id': trash_id.value
-            }),
-        }
 
-        fetch(url,myinit)
-        .then(function(response){
-            response.json().then(function(dado){
-                if(tipo == 1){
-                    ArrayLixeiraGraficoTempo = [['Horario', 'Capacidade']]
-                dado.map((dados)=>{
-                    LixeiraGraficoTempo([dados.created_at,parseInt(dados.trash_capacity_used)])
+        }else{
+
+            TempoRealDiv.classList.add("d-none")
+            NormalDiv.classList.remove("d-none")
+
+            let url = "/trash/history/info";
+            let myinit = {
+            method : 'POST',
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+                    },
+                body: JSON.stringify({'timestamp': parseInt(tempo),
+                                    'id': trash_id.value
+                }),
+            }
+
+            fetch(url,myinit)
+            .then(function(response){
+                response.json().then(function(dado){
+
+                    if(tipo == 1){
+                        ArrayLixeiraGraficoTempo = [['Horario', 'Capacidade']]
+
+                    dado.map((dados)=>{
+                        LixeiraGraficoTempo([dados.created_at,parseInt(dados.trash_capacity_used)])
+                    })
+                }
+                if(tipo == 2){
+                    alasql('SELECT * INTO XLSX("arquivo.xlsx", {headers: true}) FROM ?', [dado]);
+                }
                 })
-            }
-            if(tipo == 2){
-                alasql('SELECT * INTO XLSX("arquivo.xlsx", {headers: true}) FROM ?', [dado]);
-            }
             })
-        })
 
-
+        }
       }
       
       function LixeiraGraficoTempo(dados = [], titulo="Capacidade da Lixeira") {
         
+        
+
+
         if(dados.length != 0){
             ArrayLixeiraGraficoTempo.push(dados)
             console.log(ArrayLixeiraGraficoTempo)
@@ -152,6 +171,30 @@ function LixeiraGrafico(dados = []) {
             
             tabela.innerHTML += html
         })
+      }
+
+      function ShowGraphics(){
+          var GraficosDiv = document.getElementById("DivGraficos")
+          var TabelaDiv = document.getElementById("tabela")
+
+          if(GraficosDiv.classList.contains("d-none")){
+            GraficosDiv.classList.remove("d-none")
+            TabelaDiv.classList.add("d-none")
+          }else{
+            GraficosDiv.classList.add("d-none")
+          }
+      }
+
+      function ShowHistory(){
+        var GraficosDiv = document.getElementById("DivGraficos")
+        var TabelaDiv = document.getElementById("tabela")
+
+        if(TabelaDiv.classList.contains("d-none")){
+            TabelaDiv.classList.remove("d-none")
+            GraficosDiv.classList.add("d-none")
+        }else{
+            TabelaDiv.classList.add("d-none")
+        }
       }
 
       

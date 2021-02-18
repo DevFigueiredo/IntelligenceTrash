@@ -146,7 +146,15 @@ class TrashController extends Controller
 
     function indexTrashList(){
         
-        return view('/trasheslist/index',['title'=>'Listagem de Lixeiras','title2'=>'oi']);
+        $regions = DB::select("select * from trash_regions");
+
+        $region = json_decode(json_encode($regions),true);
+
+        foreach ($region as &$value){
+            $value['trash_regions_description'] = str_replace(' ', '_', $value['trash_regions_description']);
+         }
+
+        return view('/trasheslist/index',['title'=>'Listagem de Lixeiras','region'=>$region]);
 
     }
 

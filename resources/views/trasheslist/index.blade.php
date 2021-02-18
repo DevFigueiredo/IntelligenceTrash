@@ -38,10 +38,9 @@
   <div class="col-md-3">
   <select class="custom-select" name="zona" id="zona">
     <option selected>Selecione...</option>
-    <option onclick="filterSelection()" value="Zona_Norte">Zona Norte</option>
-    <option onclick="filterSelection()" value="Zona_Sul">Zona Sul</option>
-    <option onclick="filterSelection()" value="Zona_Leste">Zona Leste</option>
-    <option onclick="filterSelection()" value="Zona_Oeste">Zona Oeste</option>
+    @foreach($region as $regions)
+      <option onclick="filterSelection()" value="{{$regions['trash_regions_description']}}">{{$regions['trash_regions_description']}}</option>
+    @endforeach
     <option onclick="filterSelection('all_zones')" value="all">Todas as regiões</option>
   </select>
   </div>

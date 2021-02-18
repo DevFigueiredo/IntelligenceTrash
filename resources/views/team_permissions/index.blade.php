@@ -21,6 +21,12 @@
 
 
 <div class="col-12">
+<div id="permissions">
+
+</div>
+
+
+<!--
   <table class="table">
   <thead class="table-dark">
   <tr>
@@ -65,7 +71,7 @@
   </tbody>
 </table>
 
-</div>
+--></div>
 
 @endsection
 

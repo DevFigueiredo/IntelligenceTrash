@@ -46,18 +46,18 @@
 </div>
 <hr>
 <div class="d-flex justify-content-center">
-    <button class="btn btn-primary"> Gráficos </button>
-    <button class="btn btn-primary ml-4"> Histórico </button>
+    <button class="btn btn-primary" onclick="ShowGraphics()"> Gráficos </button>
+    <button class="btn btn-primary ml-4" onclick="ShowHistory()"> Histórico </button>
 </div>
 
 
-<div style="display: block; margin-top: 10px;">
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
-    </hr>
+<div style="margin-top: 10px;" class="d-none" id="DivGraficos">
+    
     <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-secondary" onclick="GraficoIntervalo(1,1)">1 Hora</button>
         <button type="button" class="btn btn-secondary" onclick="GraficoIntervalo(2,1)">1 Dia</button>
         <button type="button" class="btn btn-secondary" onclick="GraficoIntervalo(3,1)">1 Semana</button>
+        <button type="button" class="btn btn-secondary" onclick="GraficoIntervalo(4,1)">Em tempo real</button>
     </div>
     <br>
     <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic example">
@@ -65,10 +65,11 @@
         <button type="button" class="btn btn-secondary" onclick="GraficoIntervalo(2,2)">Exportar dados de 1 Dia</button>
         <button type="button" class="btn btn-secondary" onclick="GraficoIntervalo(3,2)">Exportar dados de 1 Semana</button>
     </div>
-    <div id="chart_div2" style="width: 900px; height: 500px;"></div>
+    <div id="chart_div" class="d-none" style="width: 900px; height: 500px;">Sem informações...</div>
+    <div id="chart_div2" class="d-none" style="width: 900px; height: 500px;">Sem informações...</div>
 </div>
 <hr>
-<div style="display: block; margin-top: 10px;">
+<div style="margin-top: 10px;" class="d-none" id="tabela">
 <table class="table">
   <thead class="thead-dark">
     <tr>

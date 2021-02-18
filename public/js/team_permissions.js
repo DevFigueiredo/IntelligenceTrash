@@ -1,2 +1,8 @@
 import('./responsability.js')
-GetTeams();
+CreateTablePermissions([])
+async function GetPermissionsView(){
+    const id_team =  document.getElementById("teams").value;
+    
+      
+}
+

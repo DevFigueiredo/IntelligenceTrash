@@ -41,7 +41,7 @@
   <hr>
   <div class="container">
    
-    <div id="lixeira-demo">
+    <div id="lixeira-demo" class="d-none">
     <div class="container">
       <div class="row align-self-stretch" id="cards-lixeira">
         
@@ -54,9 +54,9 @@
 
 
     <hr>
-    <div id="regiao-demo" class="mt-4">
+    <div id="regiao-demo" class="mt-4" class="d-none">
     <div class="container">
-      <div class="row" id="cards-regiao">
+      <div class="row" id="cards-regiao" class="d-none">
         
       </div>
       <button class="btn btn-primary" style="float: right; margin-top: 3vh; margin-bottom: 3vh;">Ver mais Regiões...</button>
