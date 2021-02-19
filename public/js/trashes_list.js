@@ -1,4 +1,4 @@
-
+var map = ""
 
 
 async function find_all_trashes_in_map(cmd = ""){
@@ -10,7 +10,7 @@ axios.get('/trash')
 
  //Importando a biblioteca do Maps
 
- var map = L.map('mapid')
+ map = L.map('mapid')
  map.setView([-23.7215727, -45.440392], 15);
  
  //Link da APi que retorna a renderização do mapa
@@ -59,7 +59,29 @@ L.marker([trash.trash_latitude, trash.trash_longitude])
 
 }
 
+function find_trashes_in_map(trash){
+  map.remove()
+  map = L.map('mapid')
+  map.setView([-23.7215123, -12.440392], 15);
 
+  //Link da APi que retorna a renderização do mapa
+ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+var LeafIcon = L.Icon.extend({
+  options: {
+      iconSize:     [48, 45],
+      shadowSize:   [50, 64],
+      iconAnchor:   [22, 94],
+      shadowAnchor: [4, 62],
+      popupAnchor:  [-3, -76]
+  }
+});
+
+
+  console.log("deu ruim")
+}
 
 
 
@@ -74,7 +96,7 @@ function find_unique_trash_in_map(id){
 
 
  //Importando a biblioteca do Maps
-var map = L.map('mapid').setView([trash.trash_latitude, trash.trash_longitude], 15);
+map = L.map('mapid').setView([trash.trash_latitude, trash.trash_longitude], 15);
 
 //Link da APi que retorna a renderização do mapa
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

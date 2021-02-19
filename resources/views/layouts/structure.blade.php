@@ -69,6 +69,7 @@
       <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <a style="color: white">Bem Vindo, {{request()->session()->get('name')[0]}}</a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
           <a class="nav-link" href="/logout">Sair</a>
@@ -82,20 +83,22 @@
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
     
+        @if (in_array(1, request()->session()->get('menu_permission'))) 
         <li class="nav-item">
             <a class="nav-link" href="/dashboard">
               <span data-feather="file"></span>
               Dashboard
             </a>
           </li>
+          @endif
           
-              <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>Monitoramento</span>
           <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
             <span data-feather="plus-circle"></span>
           </a>
         </h6>
- 
+        @if (in_array(2, request()->session()->get('menu_permission'))) 
          <ul class="nav flex-column mb-2">
     
           <li class="nav-item">
@@ -105,6 +108,7 @@
             </a>
           </li>
           
+          @endif
          
          
          
@@ -116,40 +120,44 @@
           </a>
         </h6>
         
- 
          <ul class="nav flex-column mb-2">
-      
+
+         @if (in_array(3, request()->session()->get('menu_permission'))) 
          <li class="nav-item">
             <a class="nav-link" href="/user/index">
               <span data-feather="file"></span>
               Usuários
             </a>
           </li>
+          @endif
 
+          @if (in_array(4, request()->session()->get('menu_permission'))) 
           <li class="nav-item">
             <a class="nav-link" href="/team/index">
               <span data-feather="file"></span>
               Times
             </a>
           </li>
+          @endif
 
-
+          @if (in_array(5, request()->session()->get('menu_permission'))) 
           <li class="nav-item">
             <a class="nav-link" href="/trash/index">
               <span data-feather="shopping-cart"></span>
                Lixeiras
             </a>
           </li> 
+          @endif
           
+          @if (in_array(6, request()->session()->get('menu_permission'))) 
           <li class="nav-item">
             <a class="nav-link" href="/region">
               <span data-feather="file"></span>
               Regiões
             </a>
           </li>
-
-
        </ul>
+       @endif
 
        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>Vinculos</span>
@@ -157,21 +165,29 @@
             <span data-feather="plus-circle"></span>
           </a>
         </h6>
-        <ul class="nav flex-column mb-2">
-    
+
+
+        <ul class="nav flex-column mb-2">    
+
+
+        @if (in_array(7, request()->session()->get('menu_permission'))) 
         <li class="nav-item">
       <a class="nav-link" href="/responsability/index">
         <span data-feather="file"></span>
          Responsabilidade
       </a>
     </li>
+    @endif
+
+
+    @if (in_array(8, request()->session()->get('menu_permission'))) 
     <li class="nav-item">
       <a class="nav-link" href="/team/permissions">
         <span data-feather="file"></span>
          Permissões de Acesso
       </a>
     </li>
-    
+    @endif
    
   </ul>
 

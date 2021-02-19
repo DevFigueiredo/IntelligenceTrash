@@ -68,7 +68,8 @@ Route::delete('/user/delete', [UserController::class, 'delete']);
 
 Route::get('/team', [TrashTeamUsersController::class, 'index']);
 Route::post('/team/permissions', [TrashTeamUsersController::class, 'CreatePermissionsView']);
-Route::get('/team/permissions', [TrashTeamUsersController::class, 'IndexViewPermissions']);
+Route::get('/team/permissions/views', [TrashTeamUsersController::class, 'IndexViewsPermissions']);
+Route::get('/team/permissions', [TrashTeamUsersController::class, 'IndexPermissionsView']);
 Route::get('/team/permissions/{id}', [TrashTeamUsersController::class, 'ShowPermissions']);
 Route::get('/team/index', [TrashTeamUsersController::class, 'indexView']);
 Route::post('/team/create', [TrashTeamUsersController::class, 'create']);

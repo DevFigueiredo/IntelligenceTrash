@@ -1,3 +1,5 @@
+
+import('./trashes_list.js')
 var DadosLixeira = null;
 
 ready = (callback) => {
@@ -5,7 +7,7 @@ ready = (callback) => {
     else document.addEventListener("DOMContentLoaded", callback);
 }
 ready(() => {
-  import('./trashes_list.js')
+  
 
 
 
@@ -114,7 +116,10 @@ function filterSelection(c = null) {
     // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
     for (i = 0; i < x.length; i++) {
       w3RemoveClass(x[i], "show");
-      if (x[i].className.indexOf(zona) > -1 && x[i].className.indexOf(status) > -1) w3AddClass(x[i], "show");
+      if (x[i].className.indexOf(zona) > -1 && x[i].className.indexOf(status) > -1){ 
+        w3AddClass(x[i], "show")
+        find_trashes_in_map()
+      };
     }
   
   }
@@ -144,5 +149,6 @@ function filterSelection(c = null) {
     element.className = arr1.join(" ");
   }
 
+  
 
   

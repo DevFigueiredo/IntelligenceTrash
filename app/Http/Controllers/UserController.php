@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\UserModel;
+use App\Http\Controllers\TrashTeamUsersController;
 
 class UserController extends Controller
 {
@@ -73,12 +74,15 @@ class UserController extends Controller
     }
 
     function indexView(Request $request){
+    
+
         return view('/user/index',['title'=>'Usuários']);
   
     }
-
    
-    function show($id){
+    
+
+   public static function show($id){
         return DB::table('users')
         ->leftJoin('trash_team_users', 'users.id_trash_team', '=', 'trash_team_users.id')
         ->select('users.*', 'trash_team_users.trash_team_description')
@@ -95,41 +99,32 @@ class UserController extends Controller
 
 
     /*Autenticação do Usuário abaixo */
+ 
 
-    public function Login(Request $request){
-        $user = $request->input('user');
-        $password = $request->input('password');
+    public static function validateUser($user, $password){
+        $userData = DB::table('users')
+        ->leftJoin('trash_team_users', 'users.id_trash_team', '=', 'trash_team_users.id')
+        ->select('users.*', 'trash_team_users.trash_team_description')
+        ->where('users.user', $user)
+        ->get();
     
+         if(sizeof($userData)!=0){
+            $login = ["status"=>$userData[0]->status,"user"=>$userData[0]->user, "name"=>$userData[0]->name, "id"=>$userData[0]->id, "id_trash_team"=>$userData[0]->id_trash_team];
+            $UserDecoded = json_decode($userData, true);
+            
+            if($UserDecoded[0]["status"]==1 && $UserDecoded[0]["password"]==$password) {
+                
+                return $UserDecoded;
 
-        if(isset($user) && $password){
+            }
+                
+                
+
+             }
     
-       $login = ["user"=>$user];
-
-       $request->session()->put('login', $login);
-
-
-       return response("Login: OK", 200);
-       
+        return false;
     
-    
-    
-    }else{
-            $request->session()->flush();
-            return response("Erro no Login",404);
-        }
-        
-    
-    }
-
-
-
-
-    public function Logout(Request $request){
-        $request->session()->flush();
-        return response('Deslogado com Sucesso!', 200);
-    
-    }
-
+       }
 
 
 

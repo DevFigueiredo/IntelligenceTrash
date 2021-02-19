@@ -22,7 +22,7 @@
   <div>
      <h2 class="d-flex justify-content-center">Lixeiras e Regiões</h2>
      <div class="d-flex justify-content-center">
-      <button type="button" onclick="BtnLixeira()" class="btn btn-danger" id="collapse-lixeira">Lixeiras</button>
+      <button type="button" class="btn btn-danger" id="collapse-lixeira" onclick="BtnLixeira()">Lixeiras</button>
       <button type="button" class="btn btn-success ml-4"  id="collapse-regiao"  onclick="BtnRegiao()">Regiões</button>
     </div>
   </div>
@@ -47,19 +47,20 @@
         
       </div>
      <a href="/trasheslist">
-      <button class="btn btn-primary" style="float: right;">Ver mais Lixeiras...</button>
+      <button class="btn btn-primary" style="float: right; margin-bottom: 3vh;">Ver mais Lixeiras...</button>
       </a>
     </div>
     </div>
 
 
-    <hr>
-    <div id="regiao-demo" class="mt-4" class="d-none">
+    
+    <div id="regiao-demo" class="mt-5 d-none">
     <div class="container">
-      <div class="row" id="cards-regiao" class="d-none">
+      <div class="row" id="cards-regiao">
         
       </div>
-      <button class="btn btn-primary" style="float: right; margin-top: 3vh; margin-bottom: 3vh;">Ver mais Regiões...</button>
+
+     
     </div>
     </div>
   </div>

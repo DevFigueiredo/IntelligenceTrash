@@ -8,13 +8,13 @@
 <div class="row">
 
 <div class="col-5 offset-3" style="margin-bottom: 30px">
-<select class="form-select" id="teams" >
+<select class="form-select" id="teams" onchange="GetPermissionsView()">
   <option>Selecione o Time</option>
 
 </select>
 </div>
 <div class="col-1">
-<button type="submit" class="btn btn-primary" id="btn_form" onclick="RegisterResponsability()">Registrar</button>
+<button type="submit" class="btn btn-primary" id="btn_form" onclick="AddPermissionsView()">Registrar</button>
 </div>
 
 <div class="row">

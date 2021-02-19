@@ -1,13 +1,25 @@
 function BtnLixeira(){
-    var LixeiraDiv = document.querySelector('#lixeira-demo')
+    var LixeiraDiv = document.getElementById("lixeira-demo")
     
-    (LixeiraDiv.classList.contains('d-none')) ? LixeiraDiv.classList.remove('d-none') : LixeiraDiv.classList.add('d-none')
+
+    if(LixeiraDiv.classList.contains('d-none')){
+        LixeiraDiv.classList.remove('d-none')
+    }else{
+        LixeiraDiv.classList.add('d-none')
+    }
+    
 }
+
 
 function BtnRegiao(){
     var RegiaoDiv = document.querySelector('#regiao-demo')
     
-    (RegiaoDiv.classList.contains('d-none')) ? RegiaoDiv.classList.remove('d-none') : RegiaoDiv.classList.add('d-none')
+    if(RegiaoDiv.classList.contains('d-none')){
+        RegiaoDiv.classList.remove('d-none')
+    }else{
+        RegiaoDiv.classList.add('d-none')
+    }
+    
 }
 
 ready = (callback) => {
@@ -195,7 +207,7 @@ function getInfos(){
         chart2.draw(data, options);
   }
 
-
+    
 
 
 //Gera grafico das regioes#cards
@@ -208,6 +220,8 @@ getInfos();
 setInterval(getInfos,5000)
 
 });
+
+
 
 
 

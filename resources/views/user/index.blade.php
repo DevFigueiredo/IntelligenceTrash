@@ -2,7 +2,6 @@
 
 
 @section('content')
-
 <script src="{{asset('/js/user.js')}}"></script>
 
 <style>
