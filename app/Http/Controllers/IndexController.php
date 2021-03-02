@@ -20,4 +20,7 @@ class IndexController extends Controller
         $request->session()->flush();
         return redirect('/');    }
 
+
+
+
 }

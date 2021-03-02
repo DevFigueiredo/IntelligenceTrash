@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 
 use App\Models\TrashModel;
+use Illuminate\Support\Facades\Log;
 
 use App\Models\TrashCapacityModel;
 
@@ -80,15 +81,26 @@ class TrashController extends Controller
     }
 
     function AddCapacity(Request $request){
+        
         $trash_capacity_used = $request->input('trash_capacity_used');
         $id_trash = $request->input('id_trash');
+        $sensor1 = $request->input('sensor1');
+        $sensor2 = $request->input('sensor2');
+        $sensor3 = $request->input('sensor3');
+        $id_lixeira = $request->input('id_lixeira');
+        
+
+//VALOR TEMPORARIO ATE RESOLVER A CONTA
+        $trash_capacity_used = 10;
+
         $TrashCapacity = new TrashCapacityModel();
         $TrashCapacity->trash_capacity_used = $trash_capacity_used;
         $TrashCapacity->id_trash = $id_trash;
       
         $TrashCapacity->save();
-        
-       return $TrashCapacity->get();
+        Log::channel('stderr')->info('Foi Inserida uma Nova Capacidade '.$sensor1." ".$sensor2." ".$sensor3);
+
+       return response(json_encode(["status"=>$sensor1]), 200);
 
     }
 
@@ -146,13 +158,13 @@ class TrashController extends Controller
 
     function indexTrashList(){
         
-        $regions = DB::select("select * from trash_regions");
+        $regions = DB::select("select * from trash_regions where status = 1");
 
         $region = json_decode(json_encode($regions),true);
 
-        foreach ($region as &$value){
-            $value['trash_regions_description'] = str_replace(' ', '_', $value['trash_regions_description']);
-         }
+       // foreach ($region as &$value){
+           // $value['trash_regions_description'] = str_replace(' ', '_', $value['trash_regions_description']);
+        // }
 
         return view('/trasheslist/index',['title'=>'Listagem de Lixeiras','region'=>$region]);
 
@@ -178,6 +190,24 @@ class TrashController extends Controller
         return view('/trash/trash_unique',['title'=>$trash[0]['trash_name'],'trash'=>$trash[0]]);
     }
 
+
     
+    function Arduino(Request $request){
+        $sensor1 = $request->input('sensor1');
+        $sensor2 = $request->input('sensor2');
+        $sensor3 = $request->input('sensor3');
+        $id_lixeira = $request->input('id_lixeira');
+        
+
+  //      $trash_capacity_used 
+    //    $id_trash 
+      //  $this->AddCapacity()
+
+        return response("Sensor 1:".$sensor1."<br/>Sensor 2:".$sensor2."<br/>Sensor 3:".$sensor3."<br/>ID Lixeira:".$id_lixeira);
+    }
+    
+    function indexIntelligence(){
+        return view('/intelligence_trash/index',['title'=>"Lixeira Inteligente"]);
+    }
 
 }
