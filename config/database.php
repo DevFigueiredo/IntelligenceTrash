@@ -72,6 +72,8 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
+            'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+
             'prefix_indexes' => true,
             'schema' => 'public',
             'sslmode' => 'prefer',
