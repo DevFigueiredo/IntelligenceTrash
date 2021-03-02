@@ -11,11 +11,11 @@ use App\Http\Controllers\TrashTeamUsersController;
 class UserController extends Controller
 {
 
-    public function __construct()
+   /* public function __construct()
     {
      $this->middleware('UserPermissions');    
      }
- 
+ */
 
  
 

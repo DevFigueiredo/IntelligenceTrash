@@ -10,7 +10,7 @@ byte mac[] = {
 IPAddress ip(192, 168, 1, 177);
 IPAddress myDns(192, 168, 1, 1);
 EthernetClient client;
-char server[] = "8324210fb2a2.ngrok.io";  
+char server[] = "intelligence-trash.herokuapp.com";  
 //IPAddress server(64,131,82,241);
 
 unsigned long lastConnectionTime = 0;           
@@ -53,7 +53,19 @@ void setup() {
     Serial.print("Endereço de IP Definido:");
     Serial.println(Ethernet.localIP());
   }
-  delay(1000);
+  
+  long microsecSensor1 = sensor1.timing();
+  long microsecSensor2 = sensor2.timing();
+
+    Serial.println("Sensor1!"); 
+  sensorU1 = sensor1.convert(microsecSensor1, Ultrasonic::CM);
+    Serial.println(sensorU1); 
+   
+    Serial.println("Sensor2!"); 
+  sensorU2 = sensor2.convert(microsecSensor2, Ultrasonic::CM);
+    Serial.println(sensorU2); 
+  
+  delay(10000);
 }
 
 
@@ -78,17 +90,7 @@ void setup() {
 
 
 void loop() {
-  
-  long microsecSensor1 = sensor1.timing();
-  long microsecSensor2 = sensor2.timing();
 
-    Serial.println("Sensor1!"); 
-  sensorU1 = sensor1.convert(microsecSensor1, Ultrasonic::CM);
-    Serial.println(sensorU1); 
-   
-    Serial.println("Sensor2!"); 
-  sensorU2 = sensor2.convert(microsecSensor2, Ultrasonic::CM);
-    Serial.println(sensorU2); 
 
   
   if (millis() - lastConnectionTime > postingInterval) {
@@ -142,7 +144,7 @@ void EnviaInformacoesParaLixeira(float sensorU1, float sensorU2, float sensorU3,
 
   if (client.connect(server, 80)) {
     Serial.println("Enviando Requisição...");
-    client.print("POST http://8324210fb2a2.ngrok.io/trash/add/capacity");
+    client.print("POST http://intelligence-trash.herokuapp.com/trash/add/capacity");
     client.print("?id_trash=");
     client.print(9);
     client.print("&sensor1=");
