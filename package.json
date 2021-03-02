@@ -28,6 +28,7 @@
     },
     "dependencies": {
         "bootstrap": "^5.0.0-beta1",
+        "ngrok": "^3.4.0",
         "ol": "^6.5.0"
     }
 }

@@ -35,12 +35,13 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/logout',[IndexController::class, 'logout']);
 Route::get('/',[IndexController::class, 'index']);
 Route::post('/',[IndexController::class, 'index'])->middleware('Login');
+Route::get('/Arduino',[TrashController::class, 'Arduino']);
 
 
 Route::get('/dashboard',[DashboardController::class, 'index']);
 
 
-
+Route::get('/intelligence', [TrashController::class, 'indexIntelligence']);
 Route::get('/trasheslist', [TrashController::class, 'indexTrashList']);
 Route::get('/trash/index', [TrashController::class, 'indexTrashView']);
 Route::get('/trash', [TrashController::class, 'index']);

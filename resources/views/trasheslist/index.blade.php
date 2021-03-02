@@ -2,9 +2,7 @@
 
 
 @section('content')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.11.6/xlsx.core.min.js"></script>
   <script src="https://cdn.jsdelivr.net/alasql/0.3/alasql.min.js"></script>
  <script src="{{asset('/js/trash_list_filters.js')}}"></script>
@@ -18,7 +16,7 @@
 }
 
 .filterDiv {
-  display: none;
+  display: block;
 
 }
 
@@ -36,22 +34,26 @@
 <div class="container-fluid">
 <div class="row">
   <div class="col-md-3">
-  <select class="custom-select" name="zona" id="zona">
-    <option selected>Selecione...</option>
+  <label for="zona"> Regiões: </label>
+  <select class="custom-select" name="zona" id="zona" onchange="filterSelection()">
+    <option selected value="all">Selecione...</option>
     @foreach($region as $regions)
-      <option onclick="filterSelection()" value="{{$regions['trash_regions_description']}}">{{$regions['trash_regions_description']}}</option>
+      <option value="{{$regions['id']}}">{{$regions['trash_regions_description']}}</option>
     @endforeach
-    <option onclick="filterSelection('all_zones')" value="all">Todas as regiões</option>
+    <option value="all_regions">Todas as regiões</option>
   </select>
   </div>
   <div class="col-md-3">
-    <select class="custom-select" name="capacidade" id="capacidade">
-      <option onclick="filterSelection('all_capct')" selected value="all">Selecione...</option>
-      <option onclick="filterSelection()" value="red">Cheia</option>
-      <option onclick="filterSelection()" value="green">Vazia</option>
+  <label for="capacidade"> Status: </label>
+    <select class="custom-select" name="capacidade" id="capacidade" onchange="filterSelection()">
+      <option  selected value="all">Selecione...</option>
+      <option  value="1">Cheia</option>
+      <option  value="0">Vazia</option>
     </select>
   </div>
   <div class="col-md-3">
+    <label for="Lixeira">Pesquisar Lixeira</label>
+    <input type="text" placeholder="Lixeira ..." name="Lixeira" id="PesquisaLixeira" onkeyup="FilterByName(this.value)" onkeydown="FilterByName(this.value)">
   </div>
   <div class="col-md-3">
     <i class="fa fa-file-excel-o" aria-hidden="true" style="color: green; float: right; cursor: pointer;" onclick="GetExcelList()"></i>

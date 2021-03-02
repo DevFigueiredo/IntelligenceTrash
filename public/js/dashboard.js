@@ -133,7 +133,7 @@ function getInfos(){
                 //Foi tentado exportar essa função abaixo para uma função externa porem da erro, não mexer
                 lixeirasCheias = 0;
                 lixeirasRenderiza = 0;
-
+                var d = new Date();
                 //Esvazia as lixeiras
                 document.querySelector("#cards-lixeira").innerHTML = "";
                 
@@ -142,7 +142,7 @@ function getInfos(){
                     //Condição para verificar as lixeiras cheias
                     if(CalculoLixeiraCheia(data)){
                         lixeirasCheias++;
-                        horario = data.last_created_capacity;
+                        horario = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + " - " +d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear() 
                     }
 
                     //Condição para inserir apenas as 8 lixeiras mais cheias na página principal
@@ -179,7 +179,7 @@ function getInfos(){
   google.charts.setOnLoadCallback(GraficoLixeiraCheia);
   
   function GraficoLixeiraCheia(dados = []) {
-        
+        console.log(dados)
         var data = new google.visualization.DataTable();
         data.addColumn('number', 'X');
         data.addColumn('number', 'Lixeiras');
@@ -217,7 +217,7 @@ var randomScalingFactor = function() {
 
 
 getInfos();
-setInterval(getInfos,5000)
+setInterval(getInfos,60000)
 
 });
 

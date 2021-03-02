@@ -59,10 +59,19 @@ L.marker([trash.trash_latitude, trash.trash_longitude])
 
 }
 
-function find_trashes_in_map(trash){
+function find_trashes_in_map(DadosLixeira){
+  //var Lixeiras = FilterTrashes(trash,DadosLixeira)
+  var Lixeiras = DadosLixeira
+
   map.remove()
   map = L.map('mapid')
-  map.setView([-23.7215123, -12.440392], 15);
+
+  if(Lixeiras.length>0){ 
+    map.setView([Lixeiras[Lixeiras.length-1].trash_latitude, Lixeiras[Lixeiras.length-1].trash_longitude], 15) 
+  }else{
+    map.setView([-23.7215727, -45.440392], 15);
+  }
+  
 
   //Link da APi que retorna a renderização do mapa
  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -79,12 +88,29 @@ var LeafIcon = L.Icon.extend({
   }
 });
 
-
-  console.log("deu ruim")
+Lixeiras.map(trash=>{
+  //Função que marca no mapa      
+  L.marker([trash.trash_latitude, trash.trash_longitude])
+  .addTo(map)
+  .bindPopup(`<b>${trash.trash_name}!</b><br>${trash.trash_address}.`)
+  .openPopup();
+    })
+  
 }
 
 
+function FilterTrashes(divs,infos){
+    var InfoDiv = []
+    divs.forEach((div)=>{
+      infos.map((info)=>{
+        if(div.id == info.id){
+          InfoDiv.push(info)
+        }
+      })
+    })
 
+    return InfoDiv;
+}
 
 
 function find_unique_trash_in_map(id){
