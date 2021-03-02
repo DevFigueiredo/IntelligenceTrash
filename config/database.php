@@ -34,20 +34,14 @@ return [
     */
 
     'connections' => [
-/*
         'sqlite' => [
             'driver' => 'sqlite',
-            'url' => env('DATABASE_URL'),
-              'database' => dirname(__DIR__).'/database/database.sqlite',
+          //  'url' => env('DATABASE_URL'),
+              'database' => dirname(__DIR__).'database/database.sqlite',
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
-*/
-'sqlite' => [
-    'driver' => 'sqlite',
-    'database' => '/database/database.sqlite',
-    'prefix' => '',
-],
+
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
