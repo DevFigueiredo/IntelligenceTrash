@@ -121,8 +121,7 @@ class TrashController extends Controller
         , b.*  
         FROM trash_capacity_used  as a
         LEFT JOIN trash as b on b.id=a.id_trash
-        where b.id=$id
-        GROUP BY id_trash, a.trash_capacity_used, last_created_capacity,last_capacity_id;");
+        where b.id=$id");
 
     }
     
@@ -135,8 +134,7 @@ class TrashController extends Controller
         ,c.trash_regions_description
         FROM trash_capacity_used  as a
         LEFT JOIN trash as b on b.id=a.id_trash
-        LEFT JOIN trash_regions as c on c.id=b.id_trash_region
-        GROUP BY id_trash, a.trash_capacity_used");
+        LEFT JOIN trash_regions as c on c.id=b.id_trash_region");
         return $trashes;
     
 
