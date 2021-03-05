@@ -30,7 +30,7 @@ class trash_history extends Seeder
             'trash_history_status_description'=>"Capacidade Atualizada"
         ]);
 
-
+/*
 
         DB::table('trash_history')->insert([
             'id_trash'=>1,
@@ -332,6 +332,6 @@ class trash_history extends Seeder
             'trash_history_description'=>'Tive que alterar merda',
             'created_at'=>date("d-m-Y H:i:s"),
             'updated_at'=>date("d-m-Y H:i:s")
-        ]);
+        ]);*/
     }
 }
