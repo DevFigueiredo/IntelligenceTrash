@@ -5,6 +5,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.11.6/xlsx.core.min.js"></script>
   <script src="https://cdn.jsdelivr.net/alasql/0.3/alasql.min.js"></script>
  <script src="{{asset('/js/trash_list_filters.js')}}"></script>
+ <script src="{{asset('/js/intelligence.js')}}"></script>
 
 <div class="d-flex justify-content-center">
     <h2>Intelligence Trash</h2>
@@ -14,7 +15,7 @@
 <div class="container-fluid">
 
   <label for="region"><b>Região</b></label>
-  <select class="form-select" name="region" id="">
+  <select class="form-select" name="region" id="region" onclick="FindTrashes()">
   <option value="null" selected>Selecione uma região...</option>
   @foreach($regions as $region)
       <option value="{{$region['id']}}">{{$region['trash_regions_description']}}</option>

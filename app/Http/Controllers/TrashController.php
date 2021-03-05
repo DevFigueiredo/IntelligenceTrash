@@ -131,7 +131,7 @@ class TrashController extends Controller
     ->leftJoin('trash', 'trash.id', '=', 'trash_capacity_used.id_trash')
     ->leftJoin('trash_regions', 'trash_regions.id', '=', 'trash.id_trash_region')
     ->select('trash_capacity_used.id as last_capacity_id',
-              'trash_capacity_used.trash_capacity_used', 
+              'trash_capacity_used.trash_capacity_used as last_capacity_id', 
               'trash_capacity_used.created_at as last_created_capacity', 
               'trash.*', 
               'trash_regions.trash_regions_description')
@@ -202,9 +202,18 @@ class TrashController extends Controller
     function indexIntelligence(){
         $trash_region= new TrashRegionsModel;
 
-        $regions = $trash_region->get();
+        $regions = $trash_region->where('status',1)->get();
 
         return view('/intelligence_trash/index',['title'=>"Lixeira Inteligente",'regions'=>$regions]);
+    }
+
+    function GetTrashByRegion(Request $request){
+        $trash_region= new TrashRegionsModel;
+
+        $region = $request->input('IdRegion');
+
+        $regions = $trash_region->where('status',1)->get();
+
     }
 
 }
