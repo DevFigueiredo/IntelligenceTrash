@@ -42,9 +42,9 @@ class UserMiddleware
             foreach($Permissions as $Permission){
               //Insere cada permissão de menu da sessão
               $request->session()->push('menu_permission', $Permission["id_permission"]);
-
+        
             }
-           
+           //return response(request()->session()->get('menu_permission'));
             return $next($request);
 
 

@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'pgsql'),
+    'default' => env('DB_CONNECTION', 'sqlite'),
 
     /*
     |--------------------------------------------------------------------------
@@ -36,12 +36,11 @@ return [
     'connections' => [
         'sqlite' => [
             'driver' => 'sqlite',
-          //  'url' => env('DATABASE_URL'),
-            'database' => env('DATABASE_PATH'),
+         //   'url' => env('DATABASE_URL'),
+            'database' => dirname(__DIR__).'\database\database.sqlite', 
             'prefix' => '',
-           // 'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+            'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
-
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
