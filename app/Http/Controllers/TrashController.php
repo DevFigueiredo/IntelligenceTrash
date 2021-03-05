@@ -11,6 +11,7 @@ use App\Models\TrashModel;
 use Illuminate\Support\Facades\Log;
 
 use App\Models\TrashCapacityModel;
+use App\Models\TrashRegionsModel;
 
 
 class TrashController extends Controller
@@ -199,11 +200,11 @@ class TrashController extends Controller
     }
     
     function indexIntelligence(){
-        $regions = DB::select("select * from trash_regions where status = 1");           
+        $trash_region= new TrashRegionsModel;
 
-        $region = json_decode(json_encode($regions));
+        $regions = $trash_region->get();
 
-        return view('/intelligence_trash/index',['title'=>"Lixeira Inteligente",'regions'=>$region]);
+        return view('/intelligence_trash/index',['title'=>"Lixeira Inteligente",'regions'=>$regions]);
     }
 
 }

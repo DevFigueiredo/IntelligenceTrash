@@ -17,7 +17,7 @@
   <select class="form-select" name="region" id="">
   <option value="null" selected>Selecione uma região...</option>
   @foreach($regions as $region)
-      <option value="{{$region}}">{{$region}}</option>
+      <option value="{{$region['id']}}">{{$region['trash_regions_description']}}</option>
   @endforeach
       <option value="all">Todas as regiões</option>
   </select>
