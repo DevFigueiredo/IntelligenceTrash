@@ -84,7 +84,7 @@
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
     
-        @if (in_array(1, request()->session()->get('menu_permission'))) 
+        @if (is_array(request()->session()->get('menu_permission')) && in_array(1, request()->session()->get('menu_permission'))) 
         <li class="nav-item">
             <a class="nav-link" href="/dashboard">
               <span data-feather="file"></span>
