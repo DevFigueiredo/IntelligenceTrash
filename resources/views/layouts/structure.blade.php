@@ -99,7 +99,7 @@
             <span data-feather="plus-circle"></span>
           </a>
         </h6>
-        @if (in_array(2, request()->session()->get('menu_permission'))) 
+        @if (is_array(request()->session()->get('menu_permission')) && in_array(2, request()->session()->get('menu_permission'))) 
          <ul class="nav flex-column mb-2">
     
           <li class="nav-item">
@@ -123,7 +123,7 @@
         
          <ul class="nav flex-column mb-2">
 
-         @if (in_array(3, request()->session()->get('menu_permission'))) 
+         @if (is_array(request()->session()->get('menu_permission')) && in_array(3, request()->session()->get('menu_permission'))) 
          <li class="nav-item">
             <a class="nav-link" href="/user/index">
               <span data-feather="file"></span>
@@ -132,7 +132,7 @@
           </li>
           @endif
 
-          @if (in_array(4, request()->session()->get('menu_permission'))) 
+          @if (is_array(request()->session()->get('menu_permission')) && in_array(4, request()->session()->get('menu_permission'))) 
           <li class="nav-item">
             <a class="nav-link" href="/team/index">
               <span data-feather="file"></span>
@@ -141,7 +141,7 @@
           </li>
           @endif
 
-          @if (in_array(5, request()->session()->get('menu_permission'))) 
+          @if (is_array(request()->session()->get('menu_permission')) && in_array(5, request()->session()->get('menu_permission'))) 
           <li class="nav-item">
             <a class="nav-link" href="/trash/index">
               <span data-feather="shopping-cart"></span>
@@ -150,7 +150,7 @@
           </li> 
           @endif
           
-          @if (in_array(6, request()->session()->get('menu_permission'))) 
+          @if (is_array(request()->session()->get('menu_permission')) && in_array(6, request()->session()->get('menu_permission'))) 
           <li class="nav-item">
             <a class="nav-link" href="/region">
               <span data-feather="file"></span>
@@ -171,7 +171,7 @@
         <ul class="nav flex-column mb-2">    
 
 
-        @if (in_array(7, request()->session()->get('menu_permission'))) 
+        @if (is_array(request()->session()->get('menu_permission')) && in_array(7, request()->session()->get('menu_permission'))) 
         <li class="nav-item">
       <a class="nav-link" href="/responsability/index">
         <span data-feather="file"></span>
@@ -181,7 +181,7 @@
     @endif
 
 
-    @if (in_array(8, request()->session()->get('menu_permission'))) 
+    @if (is_array(request()->session()->get('menu_permission')) && in_array(8, request()->session()->get('menu_permission'))) 
     <li class="nav-item">
       <a class="nav-link" href="/team/permissions">
         <span data-feather="file"></span>
