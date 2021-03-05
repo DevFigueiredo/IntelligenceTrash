@@ -17,6 +17,21 @@ class trash_history extends Seeder
      */
     public function run()
     {
+        DB::table('trash_history_status')->insert([
+            'trash_history_status_description'=>"Lixeira adicionada."
+        ]);
+        DB::table('trash_history_status')->insert([
+            'trash_history_status_description'=>"Lixeira atualizada."
+        ]);
+        DB::table('trash_history_status')->insert([
+            'trash_history_status_description'=>"Lixeira inativada."
+        ]);
+        DB::table('trash_history_status')->insert([
+            'trash_history_status_description'=>"Capacidade Atualizada"
+        ]);
+
+
+
         DB::table('trash_history')->insert([
             'id_trash'=>1,
             'id_history_status'=>2,

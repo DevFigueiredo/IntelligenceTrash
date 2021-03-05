@@ -17,6 +17,9 @@ class trash_team_users extends Seeder
      */
     public function run()
     {
+
+       	
+
         DB::table('trash_team_users')->insert([
             'trash_team_description'=>"Supervisor",
             'status'=>0,
@@ -37,6 +40,17 @@ class trash_team_users extends Seeder
             'created_at'=>date("d-m-Y H:i:s"),
             'updated_at'=>date("d-m-Y H:i:s")
         ]);
+
+
+        DB::table('users')->insert([
+            "name"=> "suporteDJ",
+            "user"=> "suporte",
+            "password"=> "1234",
+            "id_trash_team"=> 1,
+            "status"=> 1
+        ]);
+
+
 
         DB::table('team_view_permissions')->insert([
             'view_permission'=>"Dashboard"
