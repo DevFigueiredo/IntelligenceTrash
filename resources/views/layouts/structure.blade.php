@@ -150,7 +150,7 @@
           </li> 
           @endif
           
-          @if (is_array(request()->session()->get('menu_permission')) && in_array(6, request()->session()->get('menu_permission'))) 
+          @if (is_array(request()->session()->get('menu_permission')) && in_array(6, request()->session()->get('menu_permission'), true)) 
           <li class="nav-item">
             <a class="nav-link" href="/region">
               <span data-feather="file"></span>
