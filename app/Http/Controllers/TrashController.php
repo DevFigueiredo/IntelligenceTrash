@@ -134,7 +134,7 @@ class TrashController extends Controller
         ,c.trash_regions_description
         FROM trash_capacity_used  as a
         LEFT JOIN trash as b on b.id=a.id_trash
-        LEFT JOIN trash_regions as c on c.id=b.id_trash_region");
+        LEFT JOIN trash_regions as c on c.id=b.id_trash_region GROUP BY b.id");
         return $trashes;
     
 

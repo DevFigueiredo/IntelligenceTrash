@@ -13,22 +13,18 @@
 
 <div class="container-fluid">
   <div class="row">
-   <div class="col-md-12">
+   
+
     <div class="custom-control custom-checkbox">
-      
         <input type="checkbox" class="custom-control-input mr-4" id="customCheck1">
-        <label class="custom-control-label" for="customCheck1"><b>ID</b></label>
-      
+        <label class="custom-control-label ml-4" for="customCheck1"><b>ID</b></label>
+    </div>
+    <div class="custom-control custom-checkbox">
         <input type="checkbox" class="custom-control-input ml-4" id="customCheck2">
-        <label class="custom-control-label" for="customCheck2"><b>ID</b></label>
-      
-    
+        <label class="custom-control-label ml-4" for="customCheck2"><b>Nome da Lixeira</b></label>
     </div>
     
     
-    
-    
-    </div>
   
   
   
