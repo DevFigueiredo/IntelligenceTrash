@@ -44,7 +44,7 @@ class UserMiddleware
               $request->session()->push('menu_permission', $Permission["id_permission"]);
         
             }
-           return response(var_dump(request()->session()->get('menu_permission')));
+           //return response(var_dump(request()->session()->get('menu_permission')));
             return $next($request);
 
 

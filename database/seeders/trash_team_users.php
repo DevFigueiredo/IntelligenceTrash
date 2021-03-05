@@ -38,6 +38,53 @@ class trash_team_users extends Seeder
             'updated_at'=>date("d-m-Y H:i:s")
         ]);
 
+        DB::table('team_view_permissions')->insert([
+            'view_permission'=>"Dashboard"
+        ]);
+        DB::table('team_view_permissions')->insert([
+            'view_permission'=>"Mapa de Lixeiras"
+        ]);
+        DB::table('team_view_permissions')->insert([
+            'view_permission'=>"Usuários"
+        ]);
+        DB::table('team_view_permissions')->insert([
+            'view_permission'=>"Times"
+        ]);
+        DB::table('team_view_permissions')->insert([
+            'view_permission'=>"Lixeiras"
+        ]);
+        DB::table('team_view_permissions')->insert([
+            'view_permission'=>"Regiões"
+        ]);
+        DB::table('team_view_permissions')->insert([
+            'view_permission'=>"Responsabilidade"
+        ]);
+        DB::table('team_view_permissions')->insert([
+            'view_permission'=>"Permissões de Acesso"
+        ]); 
      
+        DB::table('team_permissions')->insert([
+            'id_team'=>1,
+            'id_permission'=>1
+        ]);
+        DB::table('team_permissions')->insert([
+            'id_team'=>1,
+            'id_permission'=>2
+        ]); DB::table('team_permissions')->insert([
+            'id_team'=>1,
+            'id_permission'=>3
+        ]); DB::table('team_permissions')->insert([
+            'id_team'=>1,
+            'id_permission'=>4
+        ]); DB::table('team_permissions')->insert([
+            'id_team'=>1,
+            'id_permission'=>5
+        ]);DB::table('team_permissions')->insert([
+            'id_team'=>1,
+            'id_permission'=>7
+        ]);DB::table('team_permissions')->insert([
+            'id_team'=>1,
+            'id_permission'=>8
+        ]);
     }
 }
