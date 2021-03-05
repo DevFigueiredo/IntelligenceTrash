@@ -15,12 +15,12 @@ use App\Models\TrashCapacityModel;
 
 class TrashController extends Controller
 {
-/*
+
     public function __construct()
     {
      $this->middleware('UserPermissions');    
      }
- */
+ 
 
 
     public function create(Request $request)

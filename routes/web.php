@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\TrashController;
 use App\Http\Controllers\TrashCapacityController;
+use App\Http\Controllers\TrashControllerArduino;
 use App\Http\Controllers\TrashRegionsController;
 use App\Http\Controllers\TrashOrganizationController;
 use App\Http\Controllers\DashboardController;
@@ -49,7 +50,7 @@ Route::get('/trash/info/{id}',[TrashController::class,'show']);
 Route::get('/trash/info/{id}/index',[TrashController::class,'indexView']);
 Route::post('/trash/create', [TrashController::class, 'create']);
 Route::put('/trash/update', [TrashController::class, 'update']);
-Route::post('/trash/add/capacity', [TrashController::class, 'AddCapacity']);
+Route::post('/trash/add/capacity', [TrashControllerArduino::class, 'AddCapacity']);
 Route::delete('/trash/delete', [TrashController::class, 'delete']);
 
 Route::get('/trash/history', [TrashHistoryController::class, 'index']);
