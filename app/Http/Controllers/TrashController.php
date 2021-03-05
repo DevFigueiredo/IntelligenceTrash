@@ -126,29 +126,23 @@ class TrashController extends Controller
     }
     
     function index(Request $request){
-        $trashes = DB::select("SELECT 
-        max(a.id) as last_capacity_id
-        , a.trash_capacity_used
-        ,a.created_at as last_created_capacity 
-        , b.* 
-        ,c.trash_regions_description
-        FROM trash_capacity_used  as a
-        LEFT JOIN trash as b on b.id=a.id_trash
-        LEFT JOIN trash_regions as c on c.id=b.id_trash_region GROUP BY b.id");
+        $trashes =  DB::table('trash_capacity_used')
+    ->leftJoin('trash', 'trash.id', '=', 'trash_capacity_used.id_trash')
+    ->leftJoin('trash_regions', 'trash_regions.id', '=', 'trash.id_trash_region')
+    ->select('trash_capacity_used.id as last_capacity_id',
+              'trash_capacity_used.trash_capacity_used', 
+              'trash_capacity_used.created_at as last_created_capacity', 
+              'trash.*', 
+              'trash_regions.trash_regions_description')
+              ->groupBy('trash.id')
+              ->orderBy('trash_capacity_used.id','desc')->get();
+  
         return $trashes;
     
 
     }
     function indexTrashView(Request $request){
-        $trashes = DB::select("SELECT 
-        max(a.id) as last_capacity_id
-        , a.trash_capacity_used
-        ,a.created_at as last_created_capacity 
-        , b.*  
-        FROM trash_capacity_used  as a
-        LEFT JOIN trash as b on b.id=a.id_trash
-        GROUP BY id_trash");
-
+        
 
         return view('/trash/index',['title'=>'Lixeiras']);
     }
@@ -205,7 +199,11 @@ class TrashController extends Controller
     }
     
     function indexIntelligence(){
-        return view('/intelligence_trash/index',['title'=>"Lixeira Inteligente"]);
+        $regions = DB::select("select * from trash_regions where status = 1");           
+
+        $region = json_decode(json_encode($regions));
+
+        return view('/intelligence_trash/index',['title'=>"Lixeira Inteligente",'regions'=>$region]);
     }
 
 }

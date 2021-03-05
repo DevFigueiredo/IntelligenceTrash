@@ -120,7 +120,7 @@ function ShowHistoryTimestampOneHour($id){
 }
 
 function ShowHistoryTimestampOneDay($id){
-   $used = DB::select("select * from trash_capacity_used  where id_trash = $id and datetime(created_at) >= datetime(datetime('now', 'localtime'), '-24 Hour')");
+   $used = DB::select("select * from trash_capacity_used  where id_trash = $id and datetime(created_at) >= datetime(datetime('now', 'localtime'), '-23 Hour')");
    //$used = DB::select("select datetime(datetime('now', 'localtime'), '-1 Hour');");
    //$used = DB::select("select * from trash_capacity_used;");
    return ($used);
