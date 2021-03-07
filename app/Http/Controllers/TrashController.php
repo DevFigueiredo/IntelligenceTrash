@@ -128,7 +128,7 @@ class TrashController extends Controller
     
     function index(Request $request){
         $trashes =  DB::select("SELECT trash.*,
-        capacity.trash_capacity_used as last_capacity_used,
+        capacity.trash_capacity_used as trash_capacity_used,
         capacity.id as last_capacity_id,
         capacity.created_at as last_created_capacity,
         region.trash_regions_description
