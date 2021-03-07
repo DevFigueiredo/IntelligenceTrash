@@ -151,7 +151,11 @@ class TrashController extends Controller
 
     function indexTrashList(){
         
-        $regions = DB::select("select * from trash_regions where status = 1");
+        $regions =  DB::table('trash_regions')
+        ->get()
+        ->where('status', "1");
+
+      
 
         $region = json_decode(json_encode($regions),true);
 
@@ -208,12 +212,12 @@ class TrashController extends Controller
     }
 
     function GetTrashByRegion(Request $request){
-        $trash_region= new TrashRegionsModel;
 
-        $region = $request->input('IdRegion');
+        $region = (int) $request->input('IdRegion');
+        
+        $regions = DB::select("select a.*, b.* from trash_regions as a inner join trash as b on (a.id = b.id_trash_region) where b.trash_status = 1 and b.id_trash_region = $region");
 
-        $regions = $trash_region->where('status',1)->get();
-
+        return json_encode($regions);
     }
 
 }

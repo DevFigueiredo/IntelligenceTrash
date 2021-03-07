@@ -13,15 +13,24 @@
 <hr>
 
 <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <label for="region"><b>Região</b></label>
+      <select class="form-select" name="region" id="region" onclick="FindTrashes()">
+      <option value="null" selected>Selecione uma região...</option>
+      @foreach($regions as $region)
+          <option value="{{$region['id']}}">{{$region['trash_regions_description']}}</option>
+      @endforeach
+          <option value="all">Todas as regiões</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label for="trash"><b>Lixeiras</b></label>
+      <select class="form-select" name="trash" id="trash" disabled>
 
-  <label for="region"><b>Região</b></label>
-  <select class="form-select" name="region" id="region" onclick="FindTrashes()">
-  <option value="null" selected>Selecione uma região...</option>
-  @foreach($regions as $region)
-      <option value="{{$region['id']}}">{{$region['trash_regions_description']}}</option>
-  @endforeach
-      <option value="all">Todas as regiões</option>
-  </select>
+      </select>
+    </div>
+  </div>
   <hr>
   <div class="row">
    <div class="col-md-2">

@@ -16,8 +16,8 @@ return [
     |
     */
 
-    //'default' => 'sqlite',
-    'default' => 'pgsql',
+    'default' => 'sqlite',
+    //'default' => 'pgsql',
     
 
     /*

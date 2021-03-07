@@ -51,7 +51,9 @@ Route::get('/trash/info/{id}/index',[TrashController::class,'indexView']);
 Route::post('/trash/create', [TrashController::class, 'create']);
 Route::put('/trash/update', [TrashController::class, 'update']);
 Route::post('/trash/add/capacity', [TrashControllerArduino::class, 'AddCapacity']);
+Route::post('/trash/list/intelligence', [TrashController::class, 'GetTrashByRegion']);
 Route::delete('/trash/delete', [TrashController::class, 'delete']);
+
 
 Route::get('/trash/history', [TrashHistoryController::class, 'index']);
 Route::get('/trash/history/{id_status_history}', [TrashHistoryController::class, 'showHistoryToStatus']);
