@@ -55,3 +55,5 @@ function GeraTrashHTML(id,desc){
 
     document.querySelector("#trash").innerHTML += conteudo;
 }
+
+

@@ -7,6 +7,7 @@
  <script src="{{asset('/js/trash_list_filters.js')}}"></script>
  <script src="{{asset('/js/intelligence.js')}}"></script>
 
+
 <div class="d-flex justify-content-center">
     <h2>Intelligence Trash</h2>
 </div>
@@ -29,6 +30,17 @@
       <select class="form-select" name="trash" id="trash" disabled>
 
       </select>
+    </div>
+
+    <div class="col-md-4">
+        <label for="time"><b>Data de Inicio:</b></label>
+        <select class="form-select" name="time" id="time" >
+          <option value="1h">1 Hora</option>
+          <option value="1d">1 Dia</option>
+          <option value="1s">1 Semana</option>
+          <option value="1m">1 mês</option>
+          </option value="all">Todos os dados</option>
+        </select>
     </div>
   </div>
   <hr>
