@@ -127,24 +127,7 @@ class TrashController extends Controller
     }
     
     function index(Request $request){
-        $trashes =  DB::select("SELECT trash.*,
-        capacity.trash_capacity_used as trash_capacity_used,
-        capacity.id as last_capacity_id,
-        capacity.created_at as last_created_capacity,
-        region.trash_regions_description
-        FROM trash_capacity_used AS capacity
-        left join trash on trash.id=capacity.id_trash
-        left join trash_regions as region on region.id=trash.id_trash_region
-        WHERE capacity.id IN
-        (SELECT
-        
-        (SELECT
-         a.id
-         FROM trash_capacity_used as a
-         WHERE a.id_trash=b.id
-         ORDER BY a.id  DESC LIMIT 1 )
-         as id_capacity_used
-         FROM trash b)
+        $trashes =  DB::select(" 
          ");
   
         return $trashes;
@@ -177,19 +160,26 @@ class TrashController extends Controller
     }
 
     function indexView($id){
-        $trashes = DB::select("SELECT 
-        max(a.id) as last_capacity_id
-        , a.trash_capacity_used
-        ,a.created_at as last_created_capacity 
-        , b.*  
-        , d.trash_organization_description as organizacao
-        , c.trash_regions_description as regiao
-        FROM trash_capacity_used  as a
-        LEFT JOIN trash as b on b.id=a.id_trash
-        INNER JOIN trash_regions as c on c.id = b.id_trash_region
-        INNER JOIN trash_organization as d on d.id = b.id_trash_organization
-        where b.id=$id
-        GROUP BY id_trash;");
+        $trashes = DB::select("SELECT trash.*,
+        capacity.trash_capacity_used as trash_capacity_used,
+        capacity.id as last_capacity_id,
+        capacity.created_at as last_created_capacity,
+        region.trash_regions_description
+        FROM trash_capacity_used AS capacity
+        left join trash on trash.id=capacity.id_trash
+        left join trash_regions as region on region.id=trash.id_trash_region
+        WHERE capacity.id IN
+        
+        (SELECT 
+        
+        (SELECT
+         a.id
+         FROM trash_capacity_used as a
+         WHERE a.id_trash=b.id
+         ORDER BY a.id DESC LIMIT 1 ) as id_capacity_used
+         
+         
+         FROM trash b) and trash.id=$id");
 
 
         $trash = json_decode(json_encode($trashes),true);
