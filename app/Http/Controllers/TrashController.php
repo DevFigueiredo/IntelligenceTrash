@@ -127,8 +127,26 @@ class TrashController extends Controller
     }
     
     function index(Request $request){
-        $trashes =  DB::select(" 
-         ");
+        $trashes =  DB::select(" SELECT trash.*,
+        capacity.trash_capacity_used as trash_capacity_used,
+        capacity.id as last_capacity_id,
+        capacity.created_at as last_created_capacity,
+        region.trash_regions_description
+        FROM trash_capacity_used AS capacity
+        left join trash on trash.id=capacity.id_trash
+        left join trash_regions as region on region.id=trash.id_trash_region
+        WHERE capacity.id IN
+        
+        (SELECT 
+        
+        (SELECT
+         a.id
+         FROM trash_capacity_used as a
+         WHERE a.id_trash=b.id
+         ORDER BY a.id DESC LIMIT 1 ) as id_capacity_used
+         
+         
+         FROM trash b)");
   
         return $trashes;
     
