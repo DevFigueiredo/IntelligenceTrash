@@ -16,13 +16,13 @@ use App\Models\TrashRegionsModel;
 
 class TrashController extends Controller
 {
-
+/*
     public function __construct()
     {
      $this->middleware('UserPermissions');    
      }
  
-
+*/
 
     public function create(Request $request)
     {
