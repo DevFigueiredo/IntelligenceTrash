@@ -10,12 +10,12 @@ use App\Models\TrashHistoryModel;
 
 class TrashHistoryController extends Controller
 {
-
+/*
    public function __construct()
    {
     $this->middleware('UserPermissions');    
     }
-
+*/
 
 
 
@@ -70,6 +70,7 @@ class TrashHistoryController extends Controller
             ->get()
             ->where('id_history_status', $id_status_history)
             ->where('id_trash', $id_trash);
+            
                }
 
    

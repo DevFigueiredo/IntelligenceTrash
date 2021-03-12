@@ -11,6 +11,7 @@ use App\Models\TrashModel;
 use Illuminate\Support\Facades\Log;
 
 use App\Models\TrashCapacityModel;
+use App\Models\TrashHistoryModel;
 
 
 class TrashControllerArduino extends Controller
@@ -31,8 +32,14 @@ class TrashControllerArduino extends Controller
         $TrashCapacity->id_trash = $id_trash;
       
          $TrashCapacity->save();
-//        Log::channel('stderr')->info('Foi Inserida uma Nova Capacidade '.$sensor1." ".$sensor2." ".$sensor3." = ".CalculateCapacity($sensor1,$sensor2,$sensor3,$id_trash));
-     
+//Insere na tabela de histórico de movimentações da lixeira
+$TrashHistory = new TrashHistoryModel;
+$TrashHistory->trash_supported = CalculateCapacity($sensor1,$sensor2,$sensor3,$id_trash);
+$TrashHistory->trash_history_description = "Atualização Periodica Automática";
+$TrashHistory->id_trash = $id_trash;
+$TrashHistory->id_history_status = 2;
+$TrashHistory->id_user = 1;
+$TrashHistory->save();
 
        return response(json_encode(["status"=>CalculateCapacity($sensor1,$sensor2,$sensor3,$id_trash)]), 200);
 
