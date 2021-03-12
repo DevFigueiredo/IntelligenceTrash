@@ -181,7 +181,7 @@ class TrashController extends Controller
                 "IdViaAdministracao" => "INTRAMUSCULAR - IM",    
                 "IdVacinador" => "LUCIANEGOMES MACEDO",    
                 "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE",
-                "Dose" => 2
+                "Dose" => 1
             ),
             array(
                 "CNS" => "", 
