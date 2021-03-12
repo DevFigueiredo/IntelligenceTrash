@@ -180,7 +180,8 @@ class TrashController extends Controller
                 "IdLote" => "210037", 
                 "IdViaAdministracao" => "INTRAMUSCULAR - IM",    
                 "IdVacinador" => "LUCIANEGOMES MACEDO",    
-                "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE"
+                "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE",
+                "Dose" => 2
             ),
             array(
                 "CNS" => "", 
@@ -200,7 +201,8 @@ class TrashController extends Controller
                 "IdLote" => "210037", 
                 "IdViaAdministracao" => "INTRAMUSCULAR - IM",    
                 "IdVacinador" => "LUCIANEGOMES MACEDO",    
-                "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE"
+                "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE",
+                "Dose" => 2
             ),
             array(        
                 "CNS" => "CLEONICE MARIA ADÃO", 
@@ -220,7 +222,8 @@ class TrashController extends Controller
                 "IdLote" => "210037", 
                 "IdViaAdministracao" => "INTRAMUSCULAR - IM",    
                 "IdVacinador" => "LUCIANEGOMES MACEDO",    
-                "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE"
+                "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE",
+                "Dose" => 2
             ),
             array(        
                 "CNS" => "BETRIZ MARQUES LOBO", 
@@ -240,7 +243,8 @@ class TrashController extends Controller
                 "IdLote" => "210037", 
                 "IdViaAdministracao" => "INTRAMUSCULAR - IM",    
                 "IdVacinador" => "LUCIANEGOMES MACEDO",    
-                "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE"
+                "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE",
+                "Dose" => 2
             ),
             array(        
                 "CNS" => "TESTE", 
@@ -260,7 +264,9 @@ class TrashController extends Controller
                 "IdLote" => "210037", 
                 "IdViaAdministracao" => "INTRAMUSCULAR - IM",    
                 "IdVacinador" => "LUCIANEGOMES MACEDO",    
-                "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE"
+                "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE",
+                "Dose" => 2
+
             ),
            
             array(        
@@ -281,13 +287,36 @@ class TrashController extends Controller
                 "IdLote" => "210037", 
                 "IdViaAdministracao" => "INTRAMUSCULAR - IM",    
                 "IdVacinador" => "LUCIANEGOMES MACEDO",    
+                "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE",
+                "Dose" => 2
+            ),
+            array(        
+                "CNS" => "30668958820", 
+                "CPF" => "",             
+                "Nome" => "SHIRLEY MERY MACEDO MARCONDES",
+                "NomeMae" => "", 
+                "CodigoSexo" => "", 
+                "DataNascimento" => "",
+                "NumeroTelefone" => "",
+                "LogradouroResidencia" => "",
+                "NumeroLogradouroResidencia" => "",
+                "Bairro" => "",
+                "ComplementoLogradouroResidencia" => "",
+                "Email" => "",
+                "IdGrupoAtendimento" => "TRABALHADOR DE SAÚDE", 
+                "IdImunobiologico" => " CORONAVAC ", 
+                "IdLote" => "210037", 
+                "IdViaAdministracao" => "INTRAMUSCULAR - IM",    
+                "IdVacinador" => "LUCIANEGOMES MACEDO",    
                 "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE"
+                "Dose" => 2
             )
+
 
            
             
            
-        
+            
                    
         ); 
         $json = json_encode($json);
