@@ -18,7 +18,7 @@ const unsigned long postingInterval = 10*1000;
 float sensorU1 = 0;
 float sensorU2 = 0;
 float sensorU3 = 0;
-float lixeira = 9;
+float lixeira = 10;
 
 #define TRIGGER_PIN_SENSOR1  7
 #define ECHO_PIN_SENSOR1     6

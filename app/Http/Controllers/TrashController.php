@@ -160,23 +160,20 @@ class TrashController extends Controller
          
          FROM trash b)");
 
-/*
 
-        $ip   = "192.168.0.1";
-        $port = "2016";
         $json = array(
             array(
-                "CNS" => "700003862564503", 
-                "CPF" => "09870477879",             
-                "Nome" => "Andreia Andrade Barbosa",
-                "NomeMae" => "Maria Apparecida Andrade", 
-                "CodigoSexo" => "F", 
-                "DataNascimento" => "13/01/1969",
-                "NumeroTelefone" => "997052215",
-                "LogradouroResidencia" => "Rua Pescada",
-                "NumeroLogradouroResidencia" => "87",
-                "Bairro" => "Ressaca",
-                "ComplementoLogradouroResidencia" => "",
+                "CNS" => "", 
+                "CPF" => "46124659891",             
+                "Nome" => "Danilo Miranda de Figueiredo",
+                "NomeMae" => "Neusa Ferreira de Miranda", 
+                "CodigoSexo" => "M", 
+                "DataNascimento" => "28/10/1948",
+                "NumeroTelefone" => "12981948265",
+                "LogradouroResidencia" => "Rua Prof. Thomaz Galhardo",
+                "NumeroLogradouroResidencia" => "1350",
+                "Bairro" => "Centro",
+                "ComplementoLogradouroResidencia" => "Danilo Materiais",
                 "Email" => "",
                 "IdGrupoAtendimento" => "", 
                 "IdImunobiologico" => "", 
@@ -228,8 +225,8 @@ class TrashController extends Controller
                    
         ); 
         $json = json_encode($json);
-        echo $json;
-*/
+       return $json;
+
 
 return $trashes;
     }
