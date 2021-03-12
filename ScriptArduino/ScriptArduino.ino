@@ -22,8 +22,8 @@ float lixeira = 9;
 
 #define TRIGGER_PIN_SENSOR1  7
 #define ECHO_PIN_SENSOR1     6
-#define TRIGGER_PIN_SENSOR2  35
-#define ECHO_PIN_SENSOR2   31
+#define TRIGGER_PIN_SENSOR2  4
+#define ECHO_PIN_SENSOR2   5
 
 Ultrasonic sensor1(TRIGGER_PIN_SENSOR1, ECHO_PIN_SENSOR1);
 Ultrasonic sensor2(TRIGGER_PIN_SENSOR2, ECHO_PIN_SENSOR2);
@@ -54,17 +54,6 @@ void setup() {
     Serial.println(Ethernet.localIP());
   }
   
-  long microsecSensor1 = sensor1.timing();
-  long microsecSensor2 = sensor2.timing();
-
-    Serial.println("Sensor1!"); 
-  sensorU1 = sensor1.convert(microsecSensor1, Ultrasonic::CM);
-    Serial.println(sensorU1); 
-   
-    Serial.println("Sensor2!"); 
-  sensorU2 = sensor2.convert(microsecSensor2, Ultrasonic::CM);
-    Serial.println(sensorU2); 
-  
   delay(10000);
 }
 
@@ -93,7 +82,19 @@ void loop() {
 
 
   
+  long microsecSensor1 = sensor1.timing();
+  long microsecSensor2 = sensor2.timing();
+
   if (millis() - lastConnectionTime > postingInterval) {
+    
+    Serial.println("Sensor1!"); 
+  sensorU1 = sensor1.convert(microsecSensor1, Ultrasonic::CM);
+    Serial.println(sensorU1); 
+   
+    Serial.println("Sensor2!"); 
+  sensorU2 = sensor2.convert(microsecSensor2, Ultrasonic::CM);
+    Serial.println(sensorU2); 
+  
     
     EnviaInformacoesParaLixeira(sensorU1,sensorU2,10, lixeira);
   

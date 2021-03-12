@@ -115,14 +115,26 @@ class TrashController extends Controller
     }
     
     function show($id){
-        return $trashes = DB::select("SELECT 
-        max(a.id) as last_capacity_id
-        , a.trash_capacity_used
-        ,a.created_at as last_created_capacity 
-        , b.*  
-        FROM trash_capacity_used  as a
-        LEFT JOIN trash as b on b.id=a.id_trash
-        where b.id=$id");
+        return  DB::select("SELECT trash.*,
+        capacity.trash_capacity_used as trash_capacity_used,
+        capacity.id as last_capacity_id,
+        capacity.created_at as last_created_capacity,
+        region.trash_regions_description as regiao
+        FROM trash_capacity_used AS capacity
+        left join trash on trash.id=capacity.id_trash
+        left join trash_regions as region on region.id=trash.id_trash_region
+        WHERE capacity.id IN
+        
+        (SELECT 
+        
+        (SELECT
+         a.id
+         FROM trash_capacity_used as a
+         WHERE a.id_trash=b.id
+         ORDER BY a.id DESC LIMIT 1 ) as id_capacity_used
+         
+         
+         FROM trash b) and trash.id=$id");
 
     }
     
@@ -147,10 +159,79 @@ class TrashController extends Controller
          
          
          FROM trash b)");
-  
-        return $trashes;
-    
 
+/*
+
+        $ip   = "192.168.0.1";
+        $port = "2016";
+        $json = array(
+            array(
+                "CNS" => "700003862564503", 
+                "CPF" => "09870477879",             
+                "Nome" => "Andreia Andrade Barbosa",
+                "NomeMae" => "Maria Apparecida Andrade", 
+                "CodigoSexo" => "F", 
+                "DataNascimento" => "13/01/1969",
+                "NumeroTelefone" => "997052215",
+                "LogradouroResidencia" => "Rua Pescada",
+                "NumeroLogradouroResidencia" => "87",
+                "Bairro" => "Ressaca",
+                "ComplementoLogradouroResidencia" => "",
+                "Email" => "",
+                "IdGrupoAtendimento" => "", 
+                "IdImunobiologico" => "", 
+                "IdLote" => "", 
+                "IdViaAdministracao" => "",    
+                "IdVacinador" => "",    
+                "IdLocalAplicacao" => ""
+            ),
+            array(
+                "CNS" => "", 
+                "CPF" => "",             
+                "Nome" => "",
+                "NomeMae" => "", 
+                "CodigoSexo" => "", 
+                "DataNascimento" => "",
+                "NumeroTelefone" => "",
+                "LogradouroResidencia" => "",
+                "NumeroLogradouroResidencia" => "",
+                "Bairro" => "",
+                "ComplementoLogradouroResidencia" => "",
+                "Email" => "",
+                "IdGrupoAtendimento" => "", 
+                "IdImunobiologico" => "", 
+                "IdLote" => "", 
+                "IdViaAdministracao" => "",    
+                "IdVacinador" => "",    
+                "IdLocalAplicacao" => ""
+            ),
+            array(
+                "CNS" => "", 
+                "CPF" => "",             
+                "Nome" => "",
+                "NomeMae" => "", 
+                "CodigoSexo" => "", 
+                "DataNascimento" => "",
+                "NumeroTelefone" => "",
+                "LogradouroResidencia" => "",
+                "NumeroLogradouroResidencia" => "",
+                "Bairro" => "",
+                "ComplementoLogradouroResidencia" => "",
+                "Email" => "",
+                "IdGrupoAtendimento" => "", 
+                "IdImunobiologico" => "", 
+                "IdLote" => "", 
+                "IdViaAdministracao" => "",    
+                "IdVacinador" => "",    
+                "IdLocalAplicacao" => ""
+            )
+                   
+        ); 
+        $json = json_encode($json);
+        echo $json;
+*/
+
+return $trashes;
     }
     function indexTrashView(Request $request){
         
@@ -179,13 +260,15 @@ class TrashController extends Controller
 
     function indexView($id){
         $trashes = DB::select("SELECT trash.*,
+        organization.trash_organization_description as organizacao,
         capacity.trash_capacity_used as trash_capacity_used,
         capacity.id as last_capacity_id,
         capacity.created_at as last_created_capacity,
-        region.trash_regions_description
+        region.trash_regions_description as regiao
         FROM trash_capacity_used AS capacity
         left join trash on trash.id=capacity.id_trash
         left join trash_regions as region on region.id=trash.id_trash_region
+        left join trash_organization as organization on organization.id=trash.id_trash_organization
         WHERE capacity.id IN
         
         (SELECT 
@@ -205,21 +288,6 @@ class TrashController extends Controller
     }
 
 
-    
-    function Arduino(Request $request){
-        $sensor1 = $request->input('sensor1');
-        $sensor2 = $request->input('sensor2');
-        $sensor3 = $request->input('sensor3');
-        $id_lixeira = $request->input('id_lixeira');
-        
-
-  //      $trash_capacity_used 
-    //    $id_trash 
-      //  $this->AddCapacity()
-
-        return response("Sensor 1:".$sensor1."<br/>Sensor 2:".$sensor2."<br/>Sensor 3:".$sensor3."<br/>ID Lixeira:".$id_lixeira);
-    }
-    
     function indexIntelligence(){
         $trash_region= new TrashRegionsModel;
 
@@ -236,5 +304,7 @@ class TrashController extends Controller
 
         return json_encode($regions);
     }
+
+
 
 }

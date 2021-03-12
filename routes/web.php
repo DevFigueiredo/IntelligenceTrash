@@ -42,6 +42,7 @@ Route::get('/Arduino',[TrashController::class, 'Arduino']);
 Route::get('/dashboard',[DashboardController::class, 'index']);
 
 
+//Route::get('/jonathan', [TrashController::class, 'jonathan']);
 Route::get('/intelligence', [TrashController::class, 'indexIntelligence']);
 Route::get('/trasheslist', [TrashController::class, 'indexTrashList']);
 Route::get('/trash/index', [TrashController::class, 'indexTrashView']);

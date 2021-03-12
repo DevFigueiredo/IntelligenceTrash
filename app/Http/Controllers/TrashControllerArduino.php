@@ -23,21 +23,43 @@ class TrashControllerArduino extends Controller
         $sensor1 = $request->input('sensor1');
         $sensor2 = $request->input('sensor2');
         $sensor3 = $request->input('sensor3');
-        $id_lixeira = $request->input('id_lixeira');
+        $id_lixeira = $request->input('id_trash');
         
 
-//VALOR TEMPORARIO ATE RESOLVER A CONTA
-        $trash_capacity_used = 10;
-
         $TrashCapacity = new TrashCapacityModel();
-        $TrashCapacity->trash_capacity_used = $trash_capacity_used;
+        $TrashCapacity->trash_capacity_used = CalculateCapacity($sensor1,$sensor2,$sensor3,$id_trash);
         $TrashCapacity->id_trash = $id_trash;
       
-        $TrashCapacity->save();
-        Log::channel('stderr')->info('Foi Inserida uma Nova Capacidade '.$sensor1." ".$sensor2." ".$sensor3);
+         $TrashCapacity->save();
+//        Log::channel('stderr')->info('Foi Inserida uma Nova Capacidade '.$sensor1." ".$sensor2." ".$sensor3." = ".CalculateCapacity($sensor1,$sensor2,$sensor3,$id_trash));
+     
 
-       return response(json_encode(["status"=>$sensor1]), 200);
+       return response(json_encode(["status"=>CalculateCapacity($sensor1,$sensor2,$sensor3,$id_trash)]), 200);
 
     }
+
+    
+
+}
+
+ function CalculateCapacity($s1,$s2,$s3,$id){
+    //Onde 40ds é a distância entre um sensor e outro na boca da lixeira
+ $AreaBase = ((60^2)*sqrt(3))/4;
+
+ //Calcula a média das alturas dos sensores
+ $MediaAltura = ($s1 + $s2 + $s3)/3;
+
+ //Calcula o volume do triangulo de base equilatero que sai o resultado em cm³, e é divido por 1000
+ //Para poder obter o valor em Litros.
+ $Volume = (($AreaBase * $MediaAltura)/3)/1000;
+ 
+
+ $MaxCapacidade = json_encode(DB::select("SELECT trash_max_support FROM trash WHERE id = $id")[0]->trash_max_support);
+ 
+ $TrueCapacity = (int) str_replace('"', '', $MaxCapacidade);
+
+ $VerdadeiroVolume = $Volume + ($TrueCapacity/3);
+
+ return $VerdadeiroVolume;
 
 }
