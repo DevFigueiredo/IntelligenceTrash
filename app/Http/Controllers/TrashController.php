@@ -308,7 +308,7 @@ class TrashController extends Controller
                 "IdLote" => "210037", 
                 "IdViaAdministracao" => "INTRAMUSCULAR - IM",    
                 "IdVacinador" => "LUCIANEGOMES MACEDO",    
-                "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE"
+                "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE",
                 "Dose" => 2
             )
 
