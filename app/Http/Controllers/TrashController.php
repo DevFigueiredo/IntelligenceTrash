@@ -206,7 +206,7 @@ class TrashController extends Controller
             ),
             array(        
                 "CNS" => "CLEONICE MARIA ADÃO", 
-                "CPF" => "2789630480",             
+                "CPF" => "27896304880",             
                 "Nome" => "",
                 "NomeMae" => "", 
                 "CodigoSexo" => "", 
