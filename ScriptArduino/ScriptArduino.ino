@@ -1,3 +1,4 @@
+
 #include <SPI.h>
 #include <Ethernet.h>
 #include <Ultrasonic.h>
@@ -20,13 +21,16 @@ float sensorU2 = 0;
 float sensorU3 = 0;
 float lixeira = 10;
 
-#define TRIGGER_PIN_SENSOR1  7
-#define ECHO_PIN_SENSOR1     6
-#define TRIGGER_PIN_SENSOR2  4
-#define ECHO_PIN_SENSOR2   5
+#define ECHO_PIN_SENSOR1     42
+#define TRIGGER_PIN_SENSOR1  43
+#define ECHO_PIN_SENSOR2   38
+#define TRIGGER_PIN_SENSOR2  39
+#define ECHO_PIN_SENSOR3   34
+#define TRIGGER_PIN_SENSOR3  35
 
 Ultrasonic sensor1(TRIGGER_PIN_SENSOR1, ECHO_PIN_SENSOR1);
 Ultrasonic sensor2(TRIGGER_PIN_SENSOR2, ECHO_PIN_SENSOR2);
+Ultrasonic sensor3(TRIGGER_PIN_SENSOR3, ECHO_PIN_SENSOR3);
 
 
 
@@ -84,60 +88,27 @@ void loop() {
   
   long microsecSensor1 = sensor1.timing();
   long microsecSensor2 = sensor2.timing();
+  long microsecSensor3 = sensor3.timing();
 
   if (millis() - lastConnectionTime > postingInterval) {
     
-    Serial.println("Sensor1!"); 
+    Serial.print("Sensor1:"); 
   sensorU1 = sensor1.convert(microsecSensor1, Ultrasonic::CM);
     Serial.println(sensorU1); 
    
-    Serial.println("Sensor2!"); 
+    Serial.print("Sensor2:"); 
   sensorU2 = sensor2.convert(microsecSensor2, Ultrasonic::CM);
     Serial.println(sensorU2); 
   
-    
+    Serial.print("Sensor3: "); 
+  sensorU3 = sensor3.convert(microsecSensor3, Ultrasonic::CM);
+    Serial.println(sensorU3); 
+
     EnviaInformacoesParaLixeira(sensorU1,sensorU2,10, lixeira);
   
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 void EnviaInformacoesParaLixeira(float sensorU1, float sensorU2, float sensorU3, int id_lixeira) {

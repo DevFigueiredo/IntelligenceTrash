@@ -25,12 +25,14 @@ class TrashControllerArduino extends Controller
         $sensor2 = $request->input('sensor2');
         $sensor3 = $request->input('sensor3');
         $id_lixeira = $request->input('id_trash');
-        
+    
 
         $TrashCapacity = new TrashCapacityModel();
+        
         $TrashCapacity->trash_capacity_used = CalculateCapacity($sensor1,$sensor2,$sensor3,$id_trash);
+        
         $TrashCapacity->id_trash = $id_trash;
-      
+     
          $TrashCapacity->save();
 //Insere na tabela de histórico de movimentações da lixeira
 $TrashHistory = new TrashHistoryModel;

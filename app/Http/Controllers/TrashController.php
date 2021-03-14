@@ -99,7 +99,7 @@ class TrashController extends Controller
         $TrashCapacity->id_trash = $id_trash;
       
         $TrashCapacity->save();
-        Log::channel('stderr')->info('Foi Inserida uma Nova Capacidade '.$sensor1." ".$sensor2." ".$sensor3);
+      //  Log::channel('stderr')->info('Foi Inserida uma Nova Capacidade '.$sensor1." ".$sensor2." ".$sensor3);
 
        return response(json_encode(["status"=>$sensor1]), 200);
 
@@ -159,7 +159,7 @@ class TrashController extends Controller
          
          
          FROM trash b)");
-
+/*
 
         $json = array(
             array(
@@ -313,8 +313,7 @@ class TrashController extends Controller
             )
 
 
-           
-            
+          
            
             
                    
@@ -322,7 +321,8 @@ class TrashController extends Controller
         $json = json_encode($json);
        return $json;
 
-
+ 
+            */
 return $trashes;
     }
     function indexTrashView(Request $request){
