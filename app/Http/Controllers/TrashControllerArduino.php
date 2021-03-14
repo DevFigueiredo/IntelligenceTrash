@@ -36,7 +36,7 @@ class TrashControllerArduino extends Controller
          $TrashCapacity->save();
 //Insere na tabela de histórico de movimentações da lixeira
 $TrashHistory = new TrashHistoryModel;
-$TrashHistory->trash_supported = CalculateCapacity($sensor1,$sensor2,$sensor3,$id_trash);
+$TrashHistory->trash_supported = (int) CalculateCapacity($sensor1,$sensor2,$sensor3,$id_trash);
 $TrashHistory->trash_history_description = "Atualização Periodica Automática";
 $TrashHistory->id_trash = $id_trash;
 $TrashHistory->id_history_status = 2;
