@@ -162,48 +162,6 @@ class TrashController extends Controller
 
 
         $json = array(
-            array(        
-                "CNS" => "", 
-                "CPF" => "17992008847",             
-                "Nome" => "FABIO DOMINGUES MULLER",
-                "NomeMae" => "", 
-                "CodigoSexo" => "", 
-                "DataNascimento" => "",
-                "NumeroTelefone" => "",
-                "LogradouroResidencia" => "",
-                "NumeroLogradouroResidencia" => "",
-                "Bairro" => "",
-                "ComplementoLogradouroResidencia" => "",
-                "Email" => "",
-                "IdGrupoAtendimento" => "TRABALHADOR DE SAÚDE", 
-                "IdImunobiologico" => " CORONAVAC ", 
-                "IdLote" => "210037", 
-                "IdViaAdministracao" => "INTRAMUSCULAR - IM",    
-                "IdVacinador" => "LUCIANEGOMES MACEDO",    
-                "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE",
-                "Dose" => 1
-            ),
-array(
-	"CNS" => "", 
-                "CPF" => "30668958820",             
-                "Nome" => "SHIRLEY MERY MACEDO MARCONDES",
-                "NomeMae" => "", 
-                "CodigoSexo" => "", 
-                "DataNascimento" => "",
-                "NumeroTelefone" => "",
-                "LogradouroResidencia" => "",
-                "NumeroLogradouroResidencia" => "",
-                "Bairro" => "",
-                "ComplementoLogradouroResidencia" => "",
-                "Email" => "",
-                "IdGrupoAtendimento" => "TRABALHADOR DE SAÚDE", 
-                "IdImunobiologico" => " CORONAVAC ", 
-                "IdLote" => "210037", 
-                "IdViaAdministracao" => "INTRAMUSCULAR - IM",    
-                "IdVacinador" => "LUCIANEGOMES MACEDO",    
-                "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE",
-                "Dose" => 2
-),
 array (
 	"CNS" => "", 
                 "CPF" => "12969126800",             
