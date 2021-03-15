@@ -159,7 +159,7 @@ class TrashController extends Controller
          
          
          FROM trash b)");
-/*
+
 
         $json = array(
             array(
@@ -322,7 +322,6 @@ class TrashController extends Controller
        return $json;
 
  
-            */
 return $trashes;
     }
     function indexTrashView(Request $request){
