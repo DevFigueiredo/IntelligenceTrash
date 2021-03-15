@@ -163,8 +163,8 @@ class TrashController extends Controller
 
         $json = array(
             array(        
-                "CNS" => "17992008847", 
-                "CPF" => "",             
+                "CNS" => "", 
+                "CPF" => "17992008847",             
                 "Nome" => "FABIO DOMINGUES MULLER",
                 "NomeMae" => "", 
                 "CodigoSexo" => "", 
@@ -184,8 +184,8 @@ class TrashController extends Controller
                 "Dose" => 1
             ),
 array(
-	"CNS" => "30668958820", 
-                "CPF" => "",             
+	"CNS" => "", 
+                "CPF" => "30668958820",             
                 "Nome" => "SHIRLEY MERY MACEDO MARCONDES",
                 "NomeMae" => "", 
                 "CodigoSexo" => "", 
@@ -205,8 +205,8 @@ array(
                 "Dose" => 2
 ),
 array (
-	"CNS" => "12969126800", 
-                "CPF" => "",             
+	"CNS" => "", 
+                "CPF" => "12969126800",             
                 "Nome" => "Margarete Maria das Dores",
                 "NomeMae" => "", 
                 "CodigoSexo" => "F", 
@@ -226,8 +226,8 @@ array (
                 "Dose" => 2
 ),
 array(
-	"CNS" => "35371571850", 
-                "CPF" => "",             
+	"CNS" => "", 
+                "CPF" => "35371571850",             
                 "Nome" => "EVELYN CRISTINA MAHFOUD ZANCHETTA",
                 "NomeMae" => "", 
                 "CodigoSexo" => "F", 
@@ -247,8 +247,8 @@ array(
                 "Dose" => 2
 ),
 array(
-	"CNS" => "45407032856", 
-                "CPF" => "",             
+	"CNS" => "", 
+                "CPF" => "45407032856",             
                 "Nome" => "EDUARDA FERNANDES GRANER BRIENCE",
                 "NomeMae" => "", 
                 "CodigoSexo" => "F", 
