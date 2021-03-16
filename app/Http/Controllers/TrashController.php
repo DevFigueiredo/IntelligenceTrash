@@ -184,8 +184,8 @@ array(
                 "Dose" => 1
 ),
 array(        
-                "CNS" => "04535474605", 
-                "CPF" => "",             
+                "CNS" => "", 
+                "CPF" => "04535474605",             
                 "Nome" => "Carmélia Rodrigues Azevedo",
                 "NomeMae" => "", 
                 "CodigoSexo" => "F", 
