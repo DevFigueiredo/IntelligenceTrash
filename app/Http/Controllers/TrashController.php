@@ -162,31 +162,10 @@ class TrashController extends Controller
 
 
         $json = array(
-array (
-	"CNS" => "", 
-                "CPF" => "12969126800",             
-                "Nome" => "Margarete Maria das Dores",
-                "NomeMae" => "", 
-                "CodigoSexo" => "F", 
-                "DataNascimento" => "",
-                "NumeroTelefone" => "",
-                "LogradouroResidencia" => "",
-                "NumeroLogradouroResidencia" => "",
-                "Bairro" => "",
-                "ComplementoLogradouroResidencia" => "",
-                "Email" => "",
-                "IdGrupoAtendimento" => "TRABALHADOR DE SAÚDE", 
-                "IdImunobiologico" => " CORONAVAC ", 
-                "IdLote" => "210037", 
-                "IdViaAdministracao" => "INTRAMUSCULAR - IM",    
-                "IdVacinador" => "LUCIANEGOMES MACEDO",    
-                "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE",
-                "Dose" => 2
-),
 array(
 	"CNS" => "", 
-                "CPF" => "35371571850",             
-                "Nome" => "EVELYN CRISTINA MAHFOUD ZANCHETTA",
+                "CPF" => "35266972807",             
+                "Nome" => "LUDLENA RODRIGUES DE CASTRO",
                 "NomeMae" => "", 
                 "CodigoSexo" => "F", 
                 "DataNascimento" => "",
@@ -200,14 +179,14 @@ array(
                 "IdImunobiologico" => " CORONAVAC ", 
                 "IdLote" => "210037", 
                 "IdViaAdministracao" => "INTRAMUSCULAR - IM",    
-                "IdVacinador" => "JAQUELINE FELIX DO ESPIRITO SANTO",    
+                "IdVacinador" => "MARLENE BENEDITA DOS SANTOS BRAGA",    
                 "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE",
-                "Dose" => 2
+                "Dose" => 1
 ),
-array(
-	"CNS" => "", 
-                "CPF" => "45407032856",             
-                "Nome" => "EDUARDA FERNANDES GRANER BRIENCE",
+array(        
+                "CNS" => "04535474605", 
+                "CPF" => "",             
+                "Nome" => "Carmélia Rodrigues Azevedo",
                 "NomeMae" => "", 
                 "CodigoSexo" => "F", 
                 "DataNascimento" => "",
@@ -221,7 +200,7 @@ array(
                 "IdImunobiologico" => " CORONAVAC ", 
                 "IdLote" => "210037", 
                 "IdViaAdministracao" => "INTRAMUSCULAR - IM",    
-                "IdVacinador" => "LUCIANEGOMES MACEDO",    
+                "IdVacinador" => "RAFAEL REZENDE SANTOS",    
                 "IdLocalAplicacao" => "DELTÓIDE ESQUERDO -DE",
                 "Dose" => 1
 )
