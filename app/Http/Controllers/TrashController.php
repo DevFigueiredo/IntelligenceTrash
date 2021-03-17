@@ -163,13 +163,13 @@ class TrashController extends Controller
 
         $json = array(
 array(
-	"CNS" => "", 
+	"CNS" => "35583629851", 
                 "CPF" => "35583629851",             
                 "Nome" => "BENEDICTA LOURENCO DE AVEIRO",
                 "NomeMae" => "LUCIA BAYER LOURENÇO", 
                 "CodigoSexo" => "F", 
                 "DataNascimento" => "07/05/1944",
-                "NumeroTelefone" => "3883-7865",
+                "NumeroTelefone" => "1238837865",
                 "LogradouroResidencia" => "RUA BENEDITO MIGUEL DA COSTA",
                 "NumeroLogradouroResidencia" => "168",
                 "Bairro" => "RIO DO OURO",
@@ -184,7 +184,7 @@ array(
                 "Dose" => 1
 ),
 array(        
-                "CNS" => "", 
+                "CNS" => "05535618802", 
                 "CPF" => "05535618802",             
                 "Nome" => "ANTONIA MARIA DOS SANTOS",
                 "NomeMae" => "ANTONIA MARIA DA CONCEIÇÃO", 
@@ -205,7 +205,7 @@ array(
                 "Dose" => 1
 ),
 array(        
-                "CNS" => "", 
+                "CNS" => "05535618802", 
                 "CPF" => "04332111800",             
                 "Nome" => "CINARA MARIA MONTEIRO PIERRE",
                 "NomeMae" => "BENEDITA DE OLIVEIRA MONTEIRO", 
@@ -226,7 +226,7 @@ array(
                 "Dose" => 1
 ),
 array(        
-                "CNS" => "", 
+                "CNS" => "05535618802", 
                 "CPF" => "54163099891",             
                 "Nome" => "JOSE MONTEIRO SOBRINHO",
                 "NomeMae" => "BENEDITA CASCARDI", 
