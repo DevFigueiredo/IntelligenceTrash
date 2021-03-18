@@ -205,7 +205,7 @@ array(
                 "Dose" => 1
 ),
 array(        
-                "CNS" => "05535618802", 
+                "CNS" => "", 
                 "CPF" => "04332111800",             
                 "Nome" => "CINARA MARIA MONTEIRO PIERRE",
                 "NomeMae" => "BENEDITA DE OLIVEIRA MONTEIRO", 
@@ -226,7 +226,7 @@ array(
                 "Dose" => 1
 ),
 array(        
-                "CNS" => "05535618802", 
+                "CNS" => "", 
                 "CPF" => "54163099891",             
                 "Nome" => "JOSE MONTEIRO SOBRINHO",
                 "NomeMae" => "BENEDITA CASCARDI", 
