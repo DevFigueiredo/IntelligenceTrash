@@ -159,6 +159,7 @@ class TrashController extends Controller
          
          
          FROM trash b)");
+return $trashes;
 
 
         $json = array(
@@ -255,7 +256,6 @@ array(
        return $json;
 
  
-return $trashes;
     }
     function indexTrashView(Request $request){
         
