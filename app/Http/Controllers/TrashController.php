@@ -159,7 +159,7 @@ class TrashController extends Controller
          
          
          FROM trash b)");
-return $trashes;
+//return $trashes;
 
 
         $json = array(        
